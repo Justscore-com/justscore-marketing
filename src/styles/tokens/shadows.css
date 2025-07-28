@@ -1,0 +1,16 @@
+/* tokens/shadows.css */
+@theme {
+  --shadow-sm: 0px 6px 24px 0px hsl(0 0% 0% / 0.05);
+  --shadow-base: 0px 6px 34px -2px hsl(0 0% 0% / 0.15);
+  --shadow-md: 0px 6px 44px -4px hsl(0 0% 0% / 0.2);
+  --shadow-lg: 0px 6px 54px -6px hsl(0 0% 0% / 0.25);
+  --shadow-xl: 0px 6px 64px -8px hsl(0 0% 0% / 0.3);
+}
+
+:root.dark {
+  --shadow-sm: none;
+  --shadow-base: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-xl: none;
+}

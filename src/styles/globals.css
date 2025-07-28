@@ -1,0 +1,329 @@
+@import 'tailwindcss';
+/* @custom-variant dark (&:where(.dark, .dark *)); */
+
+/* Import the updated fonts */
+@import './fonts.css';
+
+/* Rest of your imports */
+@import './tokens/theme.css';
+@import './tokens/typography.css';
+@import './tokens/spacing.css';
+
+/* Base layer is now automatically created with @import "tailwindcss" */
+@layer base {
+	:root {
+		/* Define font families using General Sans and Montagu Slab */
+		--font-sans:
+			'General Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+			Roboto, 'Helvetica Neue', Arial, sans-serif;
+		--font-serif: 'Montagu Slab', Georgia, 'Times New Roman', Times, serif;
+
+		/* Sidebar width variables - CRITICAL for collapse behavior */
+		--sidebar-width: 14rem;
+		--sidebar-width-mobile: 18rem;
+		--sidebar-width-icon: 3rem;
+	}
+
+	body {
+		@apply bg-background text-foreground text-base leading-normal antialiased;
+		font-feature-settings:
+			'rlig' 1,
+			'calt' 1;
+		font-family: var(--font-sans);
+	}
+}
+
+/* SIDEBAR UTILITIES - Optimized for TailwindCSS v4 and Performance */
+@layer utilities {
+	/* Basic sidebar widths */
+	.w-sidebar {
+		width: var(--sidebar-width);
+	}
+	.w-sidebar-icon {
+		width: var(--sidebar-width-icon);
+	}
+	.w-sidebar-mobile {
+		width: var(--sidebar-width-mobile);
+	}
+
+	/* Icon mode with spacing for floating/inset variants */
+	.w-sidebar-icon-with-spacing {
+		width: calc(var(--sidebar-width-icon) + 1rem);
+	}
+	.w-sidebar-icon-with-spacing-plus {
+		width: calc(var(--sidebar-width-icon) + 1rem + 2px);
+	}
+
+	/* IMPROVED: Faster, smoother animations with hardware acceleration */
+	.group-data-\[collapsible\=icon\]\:w-sidebar-icon[data-collapsible='icon'] {
+		width: var(--sidebar-width-icon) !important;
+		transform: translateZ(0); /* Hardware acceleration */
+		will-change: width; /* Optimize for width changes */
+	}
+
+	.group-data-\[collapsible\=icon\]\:w-sidebar-icon-with-spacing[data-collapsible='icon'] {
+		width: calc(var(--sidebar-width-icon) + 1rem) !important;
+		transform: translateZ(0);
+		will-change: width;
+	}
+
+	.group-data-\[collapsible\=icon\]\:w-sidebar-icon-with-spacing-plus[data-collapsible='icon'] {
+		width: calc(var(--sidebar-width-icon) + 1rem + 2px) !important;
+		transform: translateZ(0);
+		will-change: width;
+	}
+
+	/* Unified transition timing for all sidebar elements */
+	.group[data-collapsible='icon'] .w-sidebar {
+		width: var(--sidebar-width-icon);
+		transition: width 150ms ease-out;
+		transform: translateZ(0);
+		will-change: width;
+	}
+
+	/* For the gap/spacer element */
+	.group[data-collapsible='icon'] .w-sidebar.bg-transparent {
+		width: var(--sidebar-width-icon);
+		transition: width 150ms ease-out;
+	}
+
+	/* For floating and inset variants */
+	.group[data-variant='floating'][data-collapsible='icon'] .w-sidebar,
+	.group[data-variant='inset'][data-collapsible='icon'] .w-sidebar {
+		width: calc(var(--sidebar-width-icon) + 1rem);
+		transition: width 150ms ease-out;
+	}
+
+	/* Optimize text and opacity transitions for collapsed state */
+	.group[data-collapsible='icon'] [data-sidebar='group-label'] {
+		transition:
+			opacity 100ms ease-out,
+			margin 150ms ease-out;
+	}
+
+	.group[data-collapsible='icon'] .sidebar-menu-text {
+		transition: opacity 100ms ease-out;
+	}
+}
+
+/**************** TYPOGRAPHY */
+
+/* Display */
+
+.display-1 {
+	@apply text-3xl md:text-4xl font-semibold tracking-tight leading-none text-foreground-strong;
+	max-width: var(--max-width-copy-xl);
+}
+.display-2 {
+	@apply text-2xl md:text-3xl font-semibold tracking-tight leading-tight text-foreground-strong;
+	max-width: var(--max-width-copy-lg);
+}
+
+/* Headings */
+.heading-1 {
+	@apply text-2xl font-semibold tracking-tight leading-tight text-foreground-strong;
+}
+.heading-2 {
+	@apply text-xl font-semibold tracking-tight leading-snug text-foreground-strong;
+}
+.heading-3 {
+	@apply text-lg font-semibold tracking-tight leading-snug text-foreground-strong;
+}
+.heading-4 {
+	@apply text-base font-semibold tracking-normal leading-normal text-foreground-strong;
+}
+.heading-5 {
+	@apply text-sm font-semibold tracking-normal leading-normal text-foreground-strong;
+}
+.heading-6 {
+	@apply text-xs font-semibold tracking-normal leading-normal text-foreground-strong;
+}
+.heading-upper {
+	@apply text-2xs font-medium tracking-wide uppercase leading-normal text-foreground-strong subpixel-antialiased;
+}
+
+/* Body */
+.body-lg {
+	@apply text-lg/6 tracking-normal;
+	max-width: var(--max-width-copy-lg);
+}
+.body-base {
+	@apply text-base tracking-normal leading-normal;
+	max-width: var(--max-width-copy-base);
+}
+.body-sm {
+	@apply text-sm tracking-normal leading-normal;
+	max-width: var(--max-width-copy-base);
+}
+.body-xs {
+	@apply text-2xs tracking-normal leading-normal;
+	max-width: var(--max-width-copy-base);
+}
+.body-link {
+	@apply font-medium underline cursor-pointer;
+	max-width: var(--max-width-copy-base);
+}
+
+/* Labels */
+.label-lg {
+	@apply text-base font-medium tracking-normal leading-none text-foreground-strong;
+}
+.label-base {
+	@apply text-sm font-medium tracking-normal leading-none text-foreground-strong;
+}
+.label-sm {
+	@apply text-xs font-medium tracking-normal leading-none text-foreground-strong;
+}
+.radio-group label,
+.radio-group label.label-lg,
+.radio-group label.label-base,
+label.radio-group .label-sm {
+	@apply font-normal text-foreground cursor-pointer;
+}
+
+/* Captions */
+.caption {
+	@apply text-sm font-normal tracking-wide leading-snug;
+}
+/* Captions */
+.text-unavailable {
+	@apply text-sm font-normal tracking-normal leading-snug text-foreground-muted;
+}
+
+/************************* LAYOUT + SPACING */
+
+.layout-page {
+	@apply w-full;
+}
+.layout-page.dashboard {
+	@apply w-full p-4 sm:p-6 sm:pt-2.5;
+}
+.layout-page-main {
+	@apply space-y-4 pt-2 pb-16 w-full;
+}
+
+/* Layout Spacing */
+.layout-padding {
+	@apply p-4 md:p-6 lg:p-8;
+}
+.layout-gap {
+	@apply space-y-4 md:space-y-6 lg:space-y-8;
+}
+
+/* Section Spacing */
+.section-padding {
+	@apply p-4;
+}
+.section-gap {
+	@apply space-y-4;
+}
+
+/* Content Blocks */
+.content-stack {
+	@apply space-y-2;
+}
+.content-padding {
+	@apply p-3;
+}
+
+/* Form Elements */
+.input-padding {
+	@apply px-3 py-2;
+}
+.input-gap {
+	@apply space-y-1.5;
+}
+
+/* Interactive Elements */
+.button-padding-sm {
+	@apply px-3 py-1.5;
+}
+.button-padding {
+	@apply px-4 py-2;
+}
+.button-padding-lg {
+	@apply px-5 py-2.5;
+}
+
+/* Component Containers */
+.card-padding {
+	@apply p-4;
+}
+.card-gap {
+	@apply space-y-4;
+}
+
+/* Navigation */
+.nav-padding {
+	@apply px-3 py-2;
+}
+.nav-item-gap {
+	@apply space-x-2;
+}
+
+/* List Structures */
+.list-gap {
+	@apply space-y-1;
+}
+.list-item-padding {
+	@apply px-2 py-1;
+}
+
+/************************* PAGE HEADER */
+/* Base container styles */
+.page-header {
+	@apply min-h-8 py-2;
+}
+
+/* Layout container */
+.page-header-container {
+	@apply flex flex-col md:flex-row md:items-start md:justify-between space-y-4 md:gap-8;
+}
+
+/* Left side with title and content */
+.page-header-content {
+	@apply hidden lg:flex gap-2;
+}
+
+/* Title container with optional icon */
+.page-header-title {
+	@apply flex items-center gap-2;
+}
+
+/* Caption text */
+.page-header-caption {
+	@apply max-w-copy-base;
+}
+
+/* Actions container */
+.page-header-actions {
+	@apply flex items-center gap-2 md:gap-3 pt-1.5;
+}
+.page-header-actions button {
+	@apply w-full lg:w-auto;
+}
+
+/********/
+
+.ui-view-controls-bar {
+	@apply flex items-center justify-end gap-4;
+}
+
+/* Star rating color */
+.star-color-off {
+	@apply text-neutral-200 fill-transparent;
+}
+.star-color-on {
+	@apply text-star-rating fill-star-rating;
+}
+
+/* Tooltip */
+.tooltip-color {
+	color: var(--neutral-50);
+	background: var(--neutral-900);
+}
+
+/* Lucide icons */
+.lucide {
+	@apply stroke-1;
+}

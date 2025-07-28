@@ -1,0 +1,189 @@
+/* fonts.css - Optimized Font Loading for JustScore */
+/* Make sure all font files are in public/fonts/ directory */
+
+/* General Sans - Sans Serif Font Family */
+@font-face {
+	font-family: 'General Sans';
+	src: url('/fonts/GeneralSans-Light.woff2') format('woff2');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+	/* Optimize loading for non-critical weights */
+	font-display: fallback;
+}
+
+@font-face {
+	font-family: 'General Sans';
+	src: url('/fonts/GeneralSans-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'General Sans';
+	src: url('/fonts/GeneralSans-Medium.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'General Sans';
+	src: url('/fonts/GeneralSans-Semibold.woff2') format('woff2');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'General Sans';
+	src: url('/fonts/GeneralSans-Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: fallback;
+	/* Use fallback for bold to prevent layout shift */
+}
+
+/* Montagu Slab - Serif Font Family */
+@font-face {
+	font-family: 'Montagu Slab';
+	src: url('/fonts/MontaguSlab-Light.woff2') format('woff2');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+	/* Variable font properties for Montagu Slab */
+	font-variation-settings: 'opsz' 16;
+}
+
+/* Add more Montagu Slab weights if you have them */
+@font-face {
+	font-family: 'Montagu Slab';
+	src: url('/fonts/MontaguSlab-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+	font-variation-settings: 'opsz' 16;
+}
+
+@font-face {
+	font-family: 'Montagu Slab';
+	src: url('/fonts/MontaguSlab-Medium.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+	font-variation-settings: 'opsz' 16;
+}
+
+/* CSS Custom Properties for Font Stacks */
+:root {
+	--font-general-sans:
+		'General Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+		Roboto, 'Helvetica Neue', Arial, sans-serif;
+	--font-montagu-slab: 'Montagu Slab', Georgia, 'Times New Roman', Times, serif;
+}
+
+/* Modern CSS Utility Classes for Direct Usage */
+
+/* General Sans Weight Classes */
+.font-general-sans {
+	font-family: var(--font-general-sans);
+}
+
+.general-sans-light {
+	font-family: var(--font-general-sans);
+	font-weight: 300;
+	font-style: normal;
+}
+
+.general-sans-regular {
+	font-family: var(--font-general-sans);
+	font-weight: 400;
+	font-style: normal;
+}
+
+.general-sans-medium {
+	font-family: var(--font-general-sans);
+	font-weight: 500;
+	font-style: normal;
+}
+
+.general-sans-semibold {
+	font-family: var(--font-general-sans);
+	font-weight: 600;
+	font-style: normal;
+}
+
+.general-sans-bold {
+	font-family: var(--font-general-sans);
+	font-weight: 700;
+	font-style: normal;
+}
+
+/* Montagu Slab Utility Classes */
+.font-montagu-slab {
+	font-family: var(--font-montagu-slab);
+	font-optical-sizing: auto;
+	font-variation-settings: 'opsz' 16;
+}
+
+.montagu-slab-light {
+	font-family: var(--font-montagu-slab);
+	font-optical-sizing: auto;
+	font-weight: 300;
+	font-style: normal;
+	font-variation-settings: 'opsz' 16;
+}
+
+.montagu-slab-regular {
+	font-family: var(--font-montagu-slab);
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+	font-variation-settings: 'opsz' 16;
+}
+
+.montagu-slab-medium {
+	font-family: var(--font-montagu-slab);
+	font-optical-sizing: auto;
+	font-weight: 500;
+	font-style: normal;
+	font-variation-settings: 'opsz' 16;
+}
+
+/* Performance Optimization Classes */
+.font-loading {
+	font-display: swap;
+}
+
+.font-critical {
+	font-display: block;
+}
+
+.font-optional {
+	font-display: optional;
+}
+
+/* Dark mode and high contrast support */
+@media (prefers-contrast: high) {
+	.general-sans-light {
+		font-weight: 400; /* Increase weight for better contrast */
+	}
+}
+
+/* Print styles */
+@media print {
+	.general-sans-light,
+	.general-sans-regular,
+	.general-sans-medium,
+	.general-sans-semibold,
+	.general-sans-bold {
+		font-family: Arial, sans-serif;
+	}
+
+	.montagu-slab-light,
+	.montagu-slab-regular,
+	.montagu-slab-medium {
+		font-family: Georgia, serif;
+	}
+}

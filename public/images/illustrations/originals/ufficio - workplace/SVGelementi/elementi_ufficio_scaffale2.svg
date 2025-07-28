@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264.44 221.31">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #c4c6cb;
+      }
+
+      .cls-2 {
+        opacity: .36;
+      }
+
+      .cls-2, .cls-3 {
+        mix-blend-mode: multiply;
+      }
+
+      .cls-4 {
+        isolation: isolate;
+      }
+
+      .cls-5 {
+        fill: #e4e5e7;
+      }
+
+      .cls-5, .cls-6 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-5, .cls-6, .cls-7 {
+        stroke: #788088;
+      }
+
+      .cls-6 {
+        fill: #b0b4ba;
+      }
+
+      .cls-3 {
+        fill: #8c8a88;
+        opacity: .32;
+      }
+
+      .cls-7 {
+        fill: #788088;
+        stroke-miterlimit: 10;
+        stroke-width: 1.42px;
+      }
+    </style>
+  </defs>
+  <g class="cls-4">
+    <g id="scaffale_2">
+      <rect class="cls-5" x="97.08" y="20.83" width="73.07" height="186.2"/>
+      <polygon class="cls-6" points="89 199.95 97.08 207.03 97.08 20.83 89 27.9 89 199.95"/>
+      <g>
+        <rect class="cls-7" x="104.99" y="87.34" width="58.22" height="52.14"/>
+        <path class="cls-1" d="M143.45,89.39l-1.28,3.66c-.35.99-1.28,1.65-2.32,1.65h-11.41c-1.04,0-1.98-.66-2.32-1.65l-1.28-3.66h-18.2v49.25h55.03v-49.25h-18.2Z"/>
+      </g>
+      <g>
+        <rect class="cls-7" x="104.99" y="147.02" width="58.22" height="52.14"/>
+        <path class="cls-1" d="M143.45,149.08l-1.28,3.66c-.35.99-1.28,1.65-2.32,1.65h-11.41c-1.04,0-1.98-.66-2.32-1.65l-1.28-3.66h-18.2v49.25h55.03v-49.25h-18.2Z"/>
+      </g>
+      <g>
+        <rect class="cls-7" x="104.99" y="28.21" width="58.22" height="52.14"/>
+        <path class="cls-1" d="M143.45,30.27l-1.28,3.66c-.35.99-1.28,1.65-2.32,1.65h-11.41c-1.04,0-1.98-.66-2.32-1.65l-1.28-3.66h-18.2v49.25h55.03V30.27h-18.2Z"/>
+      </g>
+    </g>
+    <g id="ombre_scaffale_2">
+      <polygon class="cls-2" points="104.39 87.06 106.03 89.12 124.24 89.12 140.78 138.38 104.39 139.2 104.39 87.06"/>
+      <polygon class="cls-2" points="104.39 146.75 106.03 148.8 124.24 148.8 140.78 198.06 104.39 198.89 104.39 146.75"/>
+      <polygon class="cls-2" points="104.39 28.21 106.03 30.27 124.24 30.27 140.78 79.53 104.39 80.35 104.39 28.21"/>
+      <rect class="cls-3" x="97.08" y="21.44" width="7.9" height="186.19"/>
+    </g>
+  </g>
+</svg>

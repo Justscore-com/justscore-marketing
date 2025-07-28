@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+previous_head=$1
+new_head=$2
+branch_checkout=$3
+
+if [ "$branch_checkout" = "1" ]; then
+  if git diff --name-only "$previous_head" "$new_head" | grep -E "(package\.json|package-lock\.json)$" > /dev/null; then
+    echo "📦 Dependencies may have changed, installing..."
+    npm install --legacy-peer-deps
+  else
+    echo "✅ No dependency changes detected"
+  fi
+fi

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 201.71 267.5">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #b1aeae;
+        mix-blend-mode: multiply;
+        opacity: .37;
+        stroke: #c4c6cb;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        fill: #788088;
+        stroke: #d5d6d9;
+        stroke-width: .75px;
+      }
+
+      .cls-4 {
+        isolation: isolate;
+      }
+
+      .cls-3 {
+        fill: none;
+        stroke: #a2a8ae;
+        stroke-width: .83px;
+      }
+    </style>
+  </defs>
+  <g class="cls-4">
+    <g id="Sedie_gropu">
+      <g>
+        <line class="cls-3" x1="97.37" y1="58.93" x2="97.37" y2="155"/>
+        <path class="cls-2" d="M97.37,149.29c-16.3,0-29.52,13.22-29.52,29.52h59.03c0-16.3-13.22-29.52-29.52-29.52Z"/>
+      </g>
+      <path class="cls-1" d="M93.14,149.59s8.79.48,16.88,9.6c9.7,10.92,5.62,19.29,5.62,19.29l11.26.33s-1.7-13.76-6.53-18.52-10.63-8.72-13.93-9.58-13.29-1.12-13.29-1.12Z"/>
+    </g>
+  </g>
+</svg>

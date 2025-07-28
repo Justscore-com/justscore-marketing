@@ -1,0 +1,62 @@
+@import 'tailwindcss';
+
+/* Import the new fonts */
+@import './fonts.css';
+
+/* Import tokens */
+@import './tokens/theme.css';
+@import './tokens/typography.css';
+@import './tokens/spacing.css';
+
+/* Import marketing components after your component definitions */
+@import './components/marketing/typography.css';
+
+@layer base {
+	body {
+		@apply bg-white text-foreground;
+		font-feature-settings:
+			'rlig' 1,
+			'calt' 1;
+	}
+
+	section {
+		@apply w-full py-12 lg:py-16 px-4 lg:px-8;
+	}
+
+	section:first-of-type {
+		@apply w-full pt-0 lg:pt-32 bg-white;
+	}
+}
+
+.section-container {
+	@apply lg:container mx-auto space-y-8 lg:space-y-14;
+}
+
+.section-header {
+	@apply max-w-xl space-y-6 px-4 lg:px-0;
+}
+
+.hero {
+	@apply max-w-2xl space-y-6 lg:space-y-8 pb-8 lg:pb-20 px-4 lg:px-0;
+}
+
+.section-header-centered {
+	@apply flex flex-col justify-center text-center mx-auto max-w-xl space-y-6 px-4 lg:px-0;
+}
+
+.hero-centered {
+	@apply flex flex-col justify-center text-center mx-auto max-w-2xl space-y-6 lg:space-y-8 pb-8 lg:pb-20 px-4 lg:px-0;
+}
+
+.btn-rounded {
+	@apply rounded-full;
+}
+
+.marketing-list-item {
+	@apply !text-base !tracking-wide !text-foreground-strong pl-1;
+}
+
+/* Lucide icons */
+.lucide {
+	@apply stroke-2;
+}

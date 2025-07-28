@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="scrivania" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 396.64 256.21">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f8f8f9;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke: #788088;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-2 {
+        fill: #d5d6d9;
+      }
+
+      .cls-3 {
+        fill: #b0b4ba;
+      }
+    </style>
+  </defs>
+  <polyline class="cls-3" points="337.4 194.42 334.48 186.25 334.48 90.97 337.4 85.64"/>
+  <polyline class="cls-3" points="59.11 194.42 62.03 186.25 62.03 90.97 59.11 85.64"/>
+  <g>
+    <rect class="cls-2" x="50.69" y="82.64" width="295.27" height="8.33"/>
+    <polyline class="cls-1" points="50.69 82.64 61.39 80.55 337.25 80.55 345.96 82.64"/>
+  </g>
+  <rect class="cls-2" x="50.69" y="90.97" width="8.07" height="103.69"/>
+  <rect class="cls-2" x="337.88" y="90.97" width="8.07" height="103.69"/>
+</svg>

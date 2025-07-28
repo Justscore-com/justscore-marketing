@@ -1,0 +1,146 @@
+/* src/styles/components/marketing/typography.css */
+
+@layer components {
+	/* Marketing Display Text */
+	.marketing-display {
+		@apply font-semibold leading-none tracking-[-0.032em] text-primary-950;
+		font-size: var(--text-5xl);
+		/* line-height: var(--leading-tight); */
+		/* letter-spacing: var(--tracking-tight); */
+	}
+
+	/* Marketing Headings */
+	.marketing-h1 {
+		@apply font-semibold leading-none tracking-tight text-primary-950;
+		font-size: var(--text-4xl);
+	}
+
+	.marketing-h2 {
+		@apply font-semibold text-primary-950;
+		font-size: var(--text-3xl);
+		line-height: var(--leading-none);
+		letter-spacing: var(--tracking-tight);
+	}
+
+	.marketing-h3 {
+		@apply font-semibold text-primary-950;
+		font-size: var(--text-2xl);
+		line-height: var(--leading-tight);
+		letter-spacing: var(--tracking-tight);
+	}
+
+	.marketing-h4 {
+		@apply font-semibold text-primary-950;
+		font-size: var(--text-xl);
+		line-height: var(--leading-tight);
+		letter-spacing: var(--tracking-tight);
+	}
+
+	.marketing-h5 {
+		@apply font-semibold text-primary-950;
+		font-size: var(--text-lg);
+		line-height: var(--leading-tight);
+		letter-spacing: var(--tracking-tight);
+	}
+
+	.marketing-h6 {
+		@apply font-semibold text-foreground-strong;
+		font-size: var(--text-base);
+		line-height: var(--leading-tight);
+		letter-spacing: var(--tracking-tight);
+	}
+
+	/* Marketing Body Text */
+	.marketing-body-lg {
+		@apply font-normal text-foreground-strong;
+		font-family: var(--font-sans);
+		font-size: var(--text-lg);
+		line-height: var(--leading-snug);
+	}
+
+	.marketing-body {
+		@apply font-normal text-foreground;
+		font-family: var(--font-sans);
+		font-size: var(--text-base);
+		line-height: var(--leading-normal);
+	}
+
+	.marketing-body-sm {
+		@apply font-normal;
+		font-family: var(--font-sans);
+		font-size: var(--text-xs);
+		line-height: var(--leading-snug);
+		letter-spacing: var(--tracking-wide);
+	}
+
+	.marketing-body-xs {
+		@apply font-normal;
+		font-family: var(--font-sans);
+		font-size: var(--text-2xs);
+		line-height: var(--leading-snug);
+	}
+
+	/* Tablet and Desktop Responsive Overrides */
+	@media (min-width: 768px) {
+		.marketing-display {
+			font-size: var(--text-7xl);
+		}
+
+		.marketing-h1 {
+			font-size: var(--text-6xl);
+		}
+
+		.marketing-h2 {
+			font-size: var(--text-5xl);
+		}
+
+		.marketing-h3 {
+			font-size: var(--text-4xl);
+		}
+
+		.marketing-h4 {
+			font-size: var(--text-3xl);
+		}
+
+		.marketing-h5 {
+			font-size: var(--text-2xl);
+		}
+
+		.marketing-h6 {
+			font-size: var(--text-xl);
+		}
+
+		.marketing-body-lg {
+			font-size: var(--text-2xl);
+		}
+
+		.marketing-body {
+			font-size: var(--text-lg);
+		}
+
+		.marketing-body-sm {
+			font-size: var(--text-sm);
+		}
+
+		.marketing-body-xs {
+			font-size: var(--text-xs);
+		}
+	}
+
+	/* Large Desktop Responsive Overrides */
+	@media (min-width: 1024px) {
+		.marketing-display {
+			font-size: var(--text-7xl);
+		}
+
+		.marketing-h1 {
+			font-size: var(--text-6xl);
+		}
+
+		.marketing-h2 {
+			font-size: var(--text-5xl);
+		}
+
+		/* All other styles remain the same as tablet breakpoint */
+	}
+}

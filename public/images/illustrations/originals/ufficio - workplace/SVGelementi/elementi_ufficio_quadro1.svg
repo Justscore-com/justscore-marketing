@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 175.65 164.79">
+  <!-- Generator: Adobe Illustrator 29.6.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 9)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: none;
+      }
+
+      .st1 {
+        fill: #a8abb1;
+      }
+
+      .st2 {
+        fill: #e7e6e6;
+      }
+
+      .st3 {
+        fill: #788088;
+      }
+
+      .st4 {
+        fill: #b1aeae;
+        mix-blend-mode: multiply;
+        opacity: .35;
+      }
+
+      .st4, .st5 {
+        isolation: isolate;
+      }
+
+      .st6 {
+        fill: #a2a8ae;
+      }
+    </style>
+  </defs>
+  <g class="st5">
+    <g id="oggetti">
+      <g>
+        <g>
+          <rect class="st2" x="62.49" y="54.55" width="51.33" height="51.33"/>
+          <g>
+            <polygon class="st0" points="110.05 58.23 111.06 57.14 111.06 57.06 65.04 57.06 66.23 58.23 65.04 57.06 64.58 57.06 64.58 103.04 66.23 101.23 64.58 103.04 64.58 103.54 111.06 103.54 111.06 103.46 110.05 102.42 111.06 103.46 111.06 57.14 110.05 58.23"/>
+            <polygon class="st1" points="111.06 103.46 111.06 103.54 64.58 103.54 64.58 103.04 59.43 108.71 116.23 108.71 111.06 103.46"/>
+            <polygon class="st1" points="64.58 57.06 65.04 57.06 59.79 51.89 59.41 51.89 59.41 108.71 59.43 108.71 64.58 103.04 64.58 57.06"/>
+          </g>
+        </g>
+        <g>
+          <rect class="st6" x="76.34" y="69.27" width="10.13" height="10.13"/>
+          <rect class="st6" x="88.51" y="81.25" width="10.13" height="10.13"/>
+          <rect class="st3" x="71.46" y="80.81" width="15.64" height="15.64"/>
+          <rect class="st3" x="87.79" y="64.2" width="15.64" height="15.64"/>
+        </g>
+      </g>
+    </g>
+    <g id="ombreOggetti">
+      <path class="st4" d="M59.79,51.89l5.26,5.17s20.27-.46,28.53,12.21c8.26,12.67,1.65,34.61,1.65,34.61l-2.82,4.83h23.83v-56.82h-56.45Z"/>
+    </g>
+  </g>
+  <polygon class="st3" points="111.06 103.46 116.23 108.71 116.23 108.71 116.23 51.89 115.98 51.89 111.06 57.14 111.06 103.46"/>
+  <polygon class="st3" points="111.06 57.06 111.06 57.14 115.98 51.89 59.79 51.89 65.04 57.06 111.06 57.06"/>
+</svg>

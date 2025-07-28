@@ -1,0 +1,36 @@
+/* themes/dark.css */
+[data-theme="dark"] {
+    --background: var(--neutral-900);
+    --foreground: var(--neutral-50);
+   
+    --card: var(--neutral-800);
+    --card-foreground: var(--neutral-50);
+   
+    --popover: var(--neutral-800);
+    --popover-foreground: var(--neutral-50);
+   
+    --primary: var(--primary-200);
+    --primary-foreground: var(--neutral-900);
+   
+    --secondary: var(--neutral-50);
+    --secondary-foreground: var(--neutral-50);
+   
+    --muted: var(--neutral-50);
+    --muted-foreground: var(--neutral-200);
+   
+    --accent: var(--accent-200);
+    --accent-foreground: var(--neutral-900);
+   
+    --destructive: var(--destructive-200);
+    --destructive-foreground: var(--neutral-900);
+   
+    --border: var(--neutral-50);
+    --input: var(--neutral-50);
+    --ring: var(--primary-200);
+   
+    --shadow-sm: none;
+    --shadow-base: none;
+    --shadow-md: none;
+    --shadow-lg: none;
+    --shadow-xl: none;
+   }
