@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { SignedIn, SignedOut } from '@clerk/nextjs';
 import { BrandLogo } from '@/components/logo/BrandLogo';
 import { Button } from '@/components/ui/core/Button';
 import { Smartphone, Play, User, BookOpen, Menu, X, Gauge } from 'lucide-react';
@@ -174,49 +173,41 @@ export const MobileBottomNav = () => {
 						<span className="text-xs mt-1">Get the App</span>
 					</Link>
 
-					<SignedOut>
-						<Link
-							href="/sign-in"
-							className="flex flex-col items-center justify-center text-neutral-base hover:text-primary"
-						>
-							<User className="size-5" />
-							<span className="text-xs mt-1">Sign In</span>
-						</Link>
-					</SignedOut>
+					<Link
+						href="/sign-in"
+						className="flex flex-col items-center justify-center text-neutral-base hover:text-primary"
+					>
+						<User className="size-5" />
+						<span className="text-xs mt-1">Sign In</span>
+					</Link>
 
-					<SignedIn>
-						<Link
-							href="/dashboard"
-							className="flex flex-col items-center justify-center text-neutral-base hover:text-primary"
-						>
-							<BookOpen className="size-5" />
-							<span className="text-xs mt-1">Docs</span>
-						</Link>
-					</SignedIn>
+					<Link
+						href="/dashboard"
+						className="flex flex-col items-center justify-center text-neutral-base hover:text-primary"
+					>
+						<BookOpen className="size-5" />
+						<span className="text-xs mt-1">Docs</span>
+					</Link>
 
-					<SignedOut>
-						<Link
-							href="/sign-up"
-							className="flex flex-col items-center justify-center text-primary font-medium"
-						>
-							<div className="flex items-center justify-center w-6 h-6 bg-primary rounded-full">
-								<span className="text-primary-foreground text-xs font-bold">
-									+
-								</span>
-							</div>
-							<span className="text-xs mt-1">Try it</span>
-						</Link>
-					</SignedOut>
+					<Link
+						href="/sign-up"
+						className="flex flex-col items-center justify-center text-primary font-medium"
+					>
+						<div className="flex items-center justify-center w-6 h-6 bg-primary rounded-full">
+							<span className="text-primary-foreground text-xs font-bold">
+								+
+							</span>
+						</div>
+						<span className="text-xs mt-1">Try it</span>
+					</Link>
 
-					<SignedIn>
-						<Link
-							href="/dashboard"
-							className="flex flex-col items-center justify-center text-primary-200 font-medium"
-						>
-							<Gauge className="size-5" />
-							<span className="text-xs mt-1">Dashboard</span>
-						</Link>
-					</SignedIn>
+					<Link
+						href="/dashboard"
+						className="flex flex-col items-center justify-center text-primary-200 font-medium"
+					>
+						<Gauge className="size-5" />
+						<span className="text-xs mt-1">Dashboard</span>
+					</Link>
 				</div>
 			</div>
 		</>

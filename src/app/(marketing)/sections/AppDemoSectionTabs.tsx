@@ -443,7 +443,7 @@ export const AppDemoSectionTabs: React.FC<AppDemoSectionTabsProps> = ({
 			{/* Additional screen reader instructions */}
 			<div className="sr-only">
 				<p>
-					This section demonstrates JustScore's key features through an
+					This section demonstrates JustScore&apos;s key features through an
 					interactive tab interface on desktop, or a sequential list on mobile
 					devices. Each feature includes detailed benefits and illustrations.
 				</p>

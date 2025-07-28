@@ -3,12 +3,9 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { useState, useEffect, useCallback } from 'react';
-import { SignedIn, SignedOut } from '@clerk/nextjs';
 import { BrandLogo } from '@/components/logo/BrandLogo';
 import { Button } from '@/components/ui/core/Button';
-import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { navConfig } from '@/app/(marketing)/config/navigation-config';
 import { useEarlyAdoptersStore } from '@/store/early-adopters-store';
 
 // Hook

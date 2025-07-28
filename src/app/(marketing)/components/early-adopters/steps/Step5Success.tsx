@@ -142,7 +142,7 @@ const Step5Success: React.FC = () => {
 			{/* Success message */}
 			<div className="space-y-1 pt-4">
 				<h2 className="marketing-h3" tabIndex={-1} aria-live="polite">
-					You're on the list!
+					You&apos;re on the list!
 				</h2>
 				<p className="marketing-body max-w-md mx-auto">
 					<span className="sr-only">Your registered email is: </span>
@@ -154,10 +154,10 @@ const Step5Success: React.FC = () => {
 			<div aria-labelledby="next-steps-heading" className="py-6">
 				<div className="space-y-1">
 					<h3 id="next-steps-heading" className="marketing-h6">
-						What's next?
+						What&apos;s next?
 					</h3>
 					<p className="caption text-foreground-weak">
-						We'll notify you as soon as early access is available.
+						We&apos;ll notify you as soon as early access is available.
 					</p>
 				</div>
 			</div>

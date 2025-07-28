@@ -1,9 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import { SignUpButton } from '@clerk/nextjs';
-import { Button } from '@/components/ui/core/Button';
 import Image from 'next/image';
 import { BadgeCheck } from 'lucide-react';
 

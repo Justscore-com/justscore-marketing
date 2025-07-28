@@ -112,10 +112,10 @@ export function StartReminder({ className = '' }: StartReminderProps) {
 					{/* Additional context for screen readers */}
 					<div className="sr-only">
 						<p>
-							By signing up for early access, you'll be among the first to
-							experience JustScore's innovative performance management platform
-							when it launches. You'll also receive exclusive updates about new
-							features and beta testing opportunities.
+							By signing up for early access, you&apos;ll be among the first to
+							experience JustScore&apos;s innovative performance management
+							platform when it launches. You&apos;ll also receive exclusive
+							updates about new features and beta testing opportunities.
 						</p>
 					</div>
 				</div>
@@ -149,7 +149,7 @@ export function StartReminder({ className = '' }: StartReminderProps) {
 				<p>
 					Join thousands of managers who are already preparing to transform
 					their performance management approach with JustScore. Be part of the
-					solution that's designed by managers, for managers.
+					solution that&apos;s designed by managers, for managers.
 				</p>
 			</div>
 

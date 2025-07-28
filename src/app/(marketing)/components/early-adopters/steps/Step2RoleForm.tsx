@@ -188,7 +188,7 @@ const Step2RoleForm: React.FC = () => {
 		<div>
 			{/* Title and Description - moved from modal header */}
 			<div className="text-left space-y-1 pb-6">
-				<h1 className="marketing-h5">What's your role?</h1>
+				<h1 className="marketing-h5">What&apos;s your role?</h1>
 				<p className="caption text-foreground-weak">
 					Help us understand your position in your organization
 				</p>

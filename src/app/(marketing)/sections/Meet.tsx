@@ -34,7 +34,9 @@ export function Meet() {
 						<div className="bg-gradient-to-br from-primary-400 to-secondary-200 rounded-3xl p-6 relative h-36 mt-8">
 							<div className="sr-only">
 								<h3>JustScore Mobile Experience</h3>
-								<p>Illustration showing JustScore's mobile interface design</p>
+								<p>
+									Illustration showing JustScore&apos;s mobile interface design
+								</p>
 							</div>
 							<Image
 								src="/images/illustrations/handlinPhone.svg"
@@ -147,7 +149,8 @@ export function Meet() {
 								<div className="sr-only">
 									<h3>JustScore Mobile Experience</h3>
 									<p>
-										Illustration showing JustScore's mobile interface design
+										Illustration showing JustScore&apos;s mobile interface
+										design
 									</p>
 								</div>
 								<Image
@@ -249,7 +252,7 @@ export function Meet() {
 					<div className="sr-only">
 						<h3>JustScore Features and Statistics</h3>
 						<p>
-							A visual grid showcasing JustScore's capabilities, mobile
+							A visual grid showcasing JustScore&apos;s capabilities, mobile
 							experience, AI features, and industry statistics about performance
 							management challenges.
 						</p>
@@ -285,7 +288,9 @@ export function Meet() {
 						<div className="col-span-6 bg-gradient-to-br from-primary-400 to-secondary-200 rounded-3xl p-6 relative">
 							<div className="sr-only">
 								<h3>JustScore Mobile Experience</h3>
-								<p>Illustration showing JustScore's mobile interface design</p>
+								<p>
+									Illustration showing JustScore&apos;s mobile interface design
+								</p>
 							</div>
 							<Image
 								src="/images/illustrations/handlinPhone.svg"
@@ -384,8 +389,8 @@ export function Meet() {
 					<div className="sr-only">
 						<h3>JustScore Features and Statistics Grid</h3>
 						<p>
-							A comprehensive visual layout showcasing JustScore's mobile and
-							desktop experiences, AI capabilities, design philosophy, and
+							A comprehensive visual layout showcasing JustScore&apos;s mobile
+							and desktop experiences, AI capabilities, design philosophy, and
 							supporting industry statistics about performance management
 							challenges.
 						</p>
@@ -451,8 +456,8 @@ export function Meet() {
 								<div className="sr-only">
 									<h3>JustScore Mobile Experience</h3>
 									<p>
-										Illustration showing JustScore's intuitive mobile interface
-										design for performance tracking
+										Illustration showing JustScore&apos;s intuitive mobile
+										interface design for performance tracking
 									</p>
 								</div>
 								<Image

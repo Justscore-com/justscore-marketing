@@ -7,9 +7,9 @@ import { motion } from 'framer-motion';
 import {
 	DemoMenu,
 	DEMO_MENU_CONFIG,
-} from '@/app/(marketing)/components/mobileAppShowcase/DemoMenu';
-import { DemoSlideshow } from '@/app/(marketing)/components/mobileAppShowcase/DemoSlideshow';
-import { DemoIllustration } from '@/app/(marketing)/components/mobileAppShowcase/DemoIllustration';
+} from '@/app/(marketing)/components/__mobileAppShowcase/DemoMenu';
+import { DemoSlideshow } from '@/app/(marketing)/components/__mobileAppShowcase/DemoSlideshow';
+import { DemoIllustration } from '@/app/(marketing)/components/__mobileAppShowcase/DemoIllustration';
 
 // Animation constants
 const SECTION_ANIMATION_DURATION = 0.5;

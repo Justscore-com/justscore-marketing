@@ -362,8 +362,8 @@ const Step4IndustryForm: React.FC = () => {
 					Select your industry from the radio button options. Use arrow keys to
 					navigate between choices, or click to select. This is the final step
 					of the registration process. Error messages will be announced
-					automatically. Press Enter or click "Get early access" to submit your
-					registration.
+					automatically. Press Enter or click &quot;Get early access&quot; to
+					submit your registration.
 				</p>
 			</div>
 		</div>

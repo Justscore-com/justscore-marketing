@@ -119,8 +119,8 @@ const Step1EmailForm: React.FC = () => {
 			<div className="space-y-2 pb-6">
 				<h2 className="marketing-h4">Get early access</h2>
 				<p className="marketing-body text-foreground-weak">
-					You'll get priority access when we launch, plus exclusive updates on
-					new features and early beta invitations.
+					You&apos;ll get priority access when we launch, plus exclusive updates
+					on new features and early beta invitations.
 				</p>
 			</div>
 

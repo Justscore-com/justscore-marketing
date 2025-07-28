@@ -3,7 +3,6 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { SignedIn, SignedOut } from '@clerk/nextjs';
 import { BrandLogo } from '@/components/logo/BrandLogo';
 import { Button } from '@/components/ui/core/Button';
 import { Menu, X } from 'lucide-react';
@@ -93,34 +92,16 @@ const MobileNavigation = () => {
 							</NavLink>
 
 							<div className="pt-2 space-y-3">
-								<SignedOut>
-									<Button
-										variant="neutral"
-										size="sm"
-										className="w-full"
-										asChild
-									>
-										<Link href="/sign-in">Sign in</Link>
-									</Button>
-									<Button
-										variant="primary"
-										size="sm"
-										className="w-full"
-										asChild
-									>
-										<Link href="/sign-up">Sign up</Link>
-									</Button>
-								</SignedOut>
-								<SignedIn>
-									<Button
-										variant="primary"
-										size="sm"
-										className="w-full"
-										asChild
-									>
-										<Link href="/dashboard">Dashboard</Link>
-									</Button>
-								</SignedIn>
+								<Button variant="neutral" size="sm" className="w-full" asChild>
+									<Link href="/sign-in">Sign in</Link>
+								</Button>
+								<Button variant="primary" size="sm" className="w-full" asChild>
+									<Link href="/sign-up">Sign up</Link>
+								</Button>
+
+								<Button variant="primary" size="sm" className="w-full" asChild>
+									<Link href="/dashboard">Dashboard</Link>
+								</Button>
 							</div>
 						</div>
 					</nav>
@@ -160,34 +141,31 @@ export const Navbar = () => {
 					</div>
 
 					<div className="hidden lg:flex items-center gap-3">
-						<SignedOut>
-							<Button
-								variant="ghost"
-								size="sm"
-								className="text-xs rounded-full px-4 pb-0"
-								asChild
-							>
-								<Link href="/sign-in">Sign in</Link>
-							</Button>
-							<Button
-								variant="primary"
-								size="sm"
-								className="text-xs rounded-full px-4 pb-0"
-								asChild
-							>
-								<Link href="/sign-up">Sign up</Link>
-							</Button>
-						</SignedOut>
-						<SignedIn>
-							<Button
-								variant="primary"
-								size="sm"
-								className="text-xs rounded-full px-4 pb-0"
-								asChild
-							>
-								<Link href="/dashboard">Dashboard</Link>
-							</Button>
-						</SignedIn>
+						<Button
+							variant="ghost"
+							size="sm"
+							className="text-xs rounded-full px-4 pb-0"
+							asChild
+						>
+							<Link href="/sign-in">Sign in</Link>
+						</Button>
+						<Button
+							variant="primary"
+							size="sm"
+							className="text-xs rounded-full px-4 pb-0"
+							asChild
+						>
+							<Link href="/sign-up">Sign up</Link>
+						</Button>
+
+						<Button
+							variant="primary"
+							size="sm"
+							className="text-xs rounded-full px-4 pb-0"
+							asChild
+						>
+							<Link href="/dashboard">Dashboard</Link>
+						</Button>
 					</div>
 
 					<MobileNavigation />

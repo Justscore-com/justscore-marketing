@@ -16,8 +16,8 @@ export const Hero = () => {
 						An original Performance Management app
 					</h1>
 					<h2 className="text-xl max-w-md text-neutral-600 font-medium mx-auto">
-						used by people managers that don't have time to waste on data entry
-						applications.
+						used by people managers that don&apos;t have time to waste on data
+						entry applications.
 					</h2>
 					{/* Action Buttons */}
 					<div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">

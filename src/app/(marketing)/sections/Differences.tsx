@@ -198,9 +198,9 @@ export const Differences = () => {
 					<h3>Comparison Summary</h3>
 					<p>
 						Traditional performance management tools have five main problems:
-						they're built for HR instead of managers, require late manual data
-						entry, use one-size-fits-none forms, have clunky user experience
-						with zero engagement, and feel like a chore.
+						they&apos;re built for HR instead of managers, require late manual
+						data entry, use one-size-fits-none forms, have clunky user
+						experience with zero engagement, and feel like a chore.
 					</p>
 					<p>
 						JustScore solves these problems by being designed for managers while

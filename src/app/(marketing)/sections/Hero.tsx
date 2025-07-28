@@ -104,7 +104,7 @@ export const Hero = () => {
 
 					{/* Main Heading - FIXED: Only H1 on the page */}
 					<h1 id="hero-heading" className="marketing-display relative">
-						Track and improve your team's performance,
+						Track and improve your team&apos;s performance,
 						<span className="relative inline-block ml-2">
 							enjoyably.
 							<EnjoyablyUnderline />
@@ -113,7 +113,7 @@ export const Hero = () => {
 
 					{/* Subtitle - Changed from h2 to p for proper hierarchy */}
 					<p className="marketing-body-lg max-w-xs md:max-w-md mx-auto lg:pb-4 pt-4">
-						Score your team's key actions and watch live performance data
+						Score your team&apos;s key actions and watch live performance data
 						unfold.
 					</p>
 
@@ -219,7 +219,8 @@ export const Hero = () => {
 												aria-hidden="true"
 											/>
 											<span>
-												Recognise who's thriving, guide who's not, with data.
+												Recognise who&apos;s thriving, guide who&apos;s not,
+												with data.
 											</span>
 										</li>
 										<li className="flex items-start gap-2 md:gap-3">
