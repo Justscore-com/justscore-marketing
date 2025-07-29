@@ -1,7 +1,6 @@
 import { Hero } from '@/app/(marketing)/sections/Hero';
 import { Meet } from '@/app/(marketing)/sections/Meet';
 import { Footer } from '@/app/(marketing)/sections/Footer';
-// import { AppDemoSection } from "./sections/AppDemoSection";
 import { AppDemoSectionTabs } from '@/app/(marketing)/sections/AppDemoSectionTabs';
 
 // ✅ ADD: Early Adopters Flow Integration
