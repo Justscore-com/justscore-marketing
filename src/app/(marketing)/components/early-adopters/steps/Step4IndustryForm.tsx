@@ -108,11 +108,11 @@ const Step4IndustryForm: React.FC = () => {
 	const handleKeyDown = useCallback(
 		(e: React.KeyboardEvent) => {
 			// Handle Enter key on focused radio group
-			if (e.key === 'Enter' && formData.industry) {
+			if (e.key === 'Enter' && formData.requestor_industry) {
 				handlePrimaryAction();
 			}
 		},
-		[formData.industry]
+		[formData.requestor_industry]
 	);
 
 	const handlePrimaryAction = async () => {
@@ -175,14 +175,14 @@ const Step4IndustryForm: React.FC = () => {
 	// Announce validation errors to screen readers
 	useEffect(() => {
 		if (
-			validation.industry.error &&
-			validation.industry.error !== previousErrorRef.current
+			validation.requestor_industry.error &&
+			validation.requestor_industry.error !== previousErrorRef.current
 		) {
-			previousErrorRef.current = validation.industry.error;
+			previousErrorRef.current = validation.requestor_industry.error;
 
 			// Create announcement for screen readers
 			if (errorAnnouncementRef.current) {
-				errorAnnouncementRef.current.textContent = `Error: ${validation.industry.error}`;
+				errorAnnouncementRef.current.textContent = `Error: ${validation.requestor_industry.error}`;
 			}
 
 			// Also announce via temporary live region for immediate feedback
@@ -190,7 +190,7 @@ const Step4IndustryForm: React.FC = () => {
 			announcer.setAttribute('aria-live', 'assertive');
 			announcer.setAttribute('aria-atomic', 'true');
 			announcer.className = 'sr-only';
-			announcer.textContent = `Industry selection error: ${validation.industry.error}`;
+			announcer.textContent = `Industry selection error: ${validation.requestor_industry.error}`;
 
 			document.body.appendChild(announcer);
 
@@ -199,13 +199,13 @@ const Step4IndustryForm: React.FC = () => {
 					document.body.removeChild(announcer);
 				}
 			}, 1000);
-		} else if (!validation.industry.error) {
+		} else if (!validation.requestor_industry.error) {
 			previousErrorRef.current = '';
 			if (errorAnnouncementRef.current) {
 				errorAnnouncementRef.current.textContent = '';
 			}
 		}
-	}, [validation.industry.error]);
+	}, [validation.requestor_industry.error]);
 
 	return (
 		<div>
@@ -229,7 +229,9 @@ const Step4IndustryForm: React.FC = () => {
 					className="space-y-2"
 					aria-labelledby="industry-selection-heading"
 					aria-describedby={
-						validation.industry.error ? 'industry-error' : 'industry-help'
+						validation.requestor_industry.error
+							? 'industry-error'
+							: 'industry-help'
 					}
 					aria-required="true"
 				>
@@ -237,11 +239,11 @@ const Step4IndustryForm: React.FC = () => {
 
 					<RadioGroup
 						ref={radioGroupRef}
-						value={formData.industry || ''}
+						value={formData.requestor_industry || ''}
 						onValueChange={handleIndustryChange}
 						className="space-y-2"
 						onKeyDown={handleKeyDown}
-						aria-invalid={!!validation.industry.error}
+						aria-invalid={!!validation.requestor_industry.error}
 					>
 						{industryOptions.map(option => (
 							<div key={option.value} className="flex items-center space-x-2">
@@ -266,7 +268,7 @@ const Step4IndustryForm: React.FC = () => {
 				</fieldset>
 
 				{/* Error message */}
-				{validation.industry.error && (
+				{validation.requestor_industry.error && (
 					<div
 						id="industry-error"
 						className="flex items-center gap-2 text-sm text-destructive-600"
@@ -274,20 +276,22 @@ const Step4IndustryForm: React.FC = () => {
 						aria-live="polite"
 					>
 						<AlertCircle className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
-						{validation.industry.error}
+						{validation.requestor_industry.error}
 					</div>
 				)}
 
 				{/* Success message for screen readers */}
-				{formData.industry && !validation.industry.error && (
-					<div className="sr-only" role="status" aria-live="polite">
-						Industry selected:{' '}
-						{
-							industryOptions.find(opt => opt.value === formData.industry)
-								?.label
-						}
-					</div>
-				)}
+				{formData.requestor_industry &&
+					!validation.requestor_industry.error && (
+						<div className="sr-only" role="status" aria-live="polite">
+							Industry selected:{' '}
+							{
+								industryOptions.find(
+									opt => opt.value === formData.requestor_industry
+								)?.label
+							}
+						</div>
+					)}
 
 				{/* Help text */}
 				<div id="industry-help" className="sr-only">
