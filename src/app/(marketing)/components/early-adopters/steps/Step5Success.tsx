@@ -3,14 +3,6 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/core/Button';
 import { useEarlyAdoptersStore } from '@/store/early-adopters-store';
-import {
-	CheckCircle,
-	Share2,
-	Copy,
-	ExternalLink,
-	Sparkles,
-	Mail,
-} from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -110,7 +102,7 @@ const Step5Success: React.FC = () => {
 	useEffect(() => {
 		// Announce success immediately
 		if (successAnnouncementRef.current) {
-			successAnnouncementRef.current.textContent = `Registration successful! Welcome to JustScore early access. Your email ${formData.email} has been registered.`;
+			successAnnouncementRef.current.textContent = `Registration successful! Welcome to JustScore early access. Your email ${formData?.email} has been registered.`;
 		}
 
 		// Create confetti effect after a short delay

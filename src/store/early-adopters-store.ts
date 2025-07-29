@@ -33,6 +33,7 @@ export interface EarlyAdopterFormData {
 	role: UserRole | null;
 	team_size: TeamSize | null;
 	requestor_industry: Industry | null;
+	email?: string | null;
 }
 
 export interface EarlyAdopterValidation {
@@ -110,6 +111,7 @@ const initialFormData: EarlyAdopterFormData = {
 	role: null,
 	team_size: null,
 	requestor_industry: null,
+	email: '',
 };
 
 const initialValidation: EarlyAdopterValidation = {
