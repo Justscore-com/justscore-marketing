@@ -168,10 +168,6 @@ export const EarlyAdoptersModal = () => {
 	};
 
 	const renderCurrentStep = () => {
-		const stepProps = {
-			key: currentStep, // Force re-mount on step change for clean state
-		};
-
 		// Loading fallback with proper accessibility
 		const LoadingFallback = () => (
 			<div
@@ -187,31 +183,31 @@ export const EarlyAdoptersModal = () => {
 			case 1:
 				return (
 					<React.Suspense fallback={<LoadingFallback />}>
-						<Step1EmailForm {...stepProps} />
+						<Step1EmailForm key={currentStep} />
 					</React.Suspense>
 				);
 			case 2:
 				return (
 					<React.Suspense fallback={<LoadingFallback />}>
-						<Step2RoleForm {...stepProps} />
+						<Step2RoleForm key={currentStep} />
 					</React.Suspense>
 				);
 			case 3:
 				return (
 					<React.Suspense fallback={<LoadingFallback />}>
-						<Step3TeamSizeForm {...stepProps} />
+						<Step3TeamSizeForm key={currentStep} />
 					</React.Suspense>
 				);
 			case 4:
 				return (
 					<React.Suspense fallback={<LoadingFallback />}>
-						<Step4IndustryForm {...stepProps} />
+						<Step4IndustryForm key={currentStep} />
 					</React.Suspense>
 				);
 			case 5:
 				return (
 					<React.Suspense fallback={<LoadingFallback />}>
-						<Step5Success {...stepProps} />
+						<Step5Success key={currentStep} />
 					</React.Suspense>
 				);
 			default:

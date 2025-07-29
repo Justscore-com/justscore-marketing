@@ -83,11 +83,11 @@ const Step3TeamSizeForm: React.FC = () => {
 	const handleKeyDown = useCallback(
 		(e: React.KeyboardEvent) => {
 			// Handle Enter key on focused radio group
-			if (e.key === 'Enter' && formData.teamSize) {
+			if (e.key === 'Enter' && formData.team_size) {
 				handlePrimaryAction();
 			}
 		},
-		[formData.teamSize]
+		[formData.team_size]
 	);
 
 	const handlePrimaryAction = async () => {
@@ -134,14 +134,14 @@ const Step3TeamSizeForm: React.FC = () => {
 	// Announce validation errors to screen readers
 	useEffect(() => {
 		if (
-			validation.teamSize.error &&
-			validation.teamSize.error !== previousErrorRef.current
+			validation.team_size.error &&
+			validation.team_size.error !== previousErrorRef.current
 		) {
-			previousErrorRef.current = validation.teamSize.error;
+			previousErrorRef.current = validation.team_size.error;
 
 			// Create announcement for screen readers
 			if (errorAnnouncementRef.current) {
-				errorAnnouncementRef.current.textContent = `Error: ${validation.teamSize.error}`;
+				errorAnnouncementRef.current.textContent = `Error: ${validation.team_size.error}`;
 			}
 
 			// Also announce via temporary live region for immediate feedback
@@ -149,7 +149,7 @@ const Step3TeamSizeForm: React.FC = () => {
 			announcer.setAttribute('aria-live', 'assertive');
 			announcer.setAttribute('aria-atomic', 'true');
 			announcer.className = 'sr-only';
-			announcer.textContent = `Team size selection error: ${validation.teamSize.error}`;
+			announcer.textContent = `Team size selection error: ${validation.team_size.error}`;
 
 			document.body.appendChild(announcer);
 
@@ -158,13 +158,13 @@ const Step3TeamSizeForm: React.FC = () => {
 					document.body.removeChild(announcer);
 				}
 			}, 1000);
-		} else if (!validation.teamSize.error) {
+		} else if (!validation.team_size.error) {
 			previousErrorRef.current = '';
 			if (errorAnnouncementRef.current) {
 				errorAnnouncementRef.current.textContent = '';
 			}
 		}
-	}, [validation.teamSize.error]);
+	}, [validation.team_size.error]);
 
 	return (
 		<div>
@@ -188,7 +188,7 @@ const Step3TeamSizeForm: React.FC = () => {
 					className="space-y-2"
 					aria-labelledby="team-size-heading"
 					aria-describedby={
-						validation.teamSize.error ? 'team-size-error' : 'team-size-help'
+						validation.team_size.error ? 'team-size-error' : 'team-size-help'
 					}
 					aria-required="true"
 				>
@@ -196,11 +196,11 @@ const Step3TeamSizeForm: React.FC = () => {
 
 					<RadioGroup
 						ref={radioGroupRef}
-						value={formData.teamSize || ''}
+						value={formData.team_size || ''}
 						onValueChange={handleTeamSizeChange}
 						className="space-y-2"
 						onKeyDown={handleKeyDown}
-						aria-invalid={!!validation.teamSize.error}
+						aria-invalid={!!validation.team_size.error}
 					>
 						{teamSizeOptions.map(option => (
 							<div key={option.value} className="flex items-center space-x-2">
@@ -225,7 +225,7 @@ const Step3TeamSizeForm: React.FC = () => {
 				</fieldset>
 
 				{/* Error message */}
-				{validation.teamSize.error && (
+				{validation.team_size.error && (
 					<div
 						id="team-size-error"
 						className="flex items-center gap-2 text-sm text-destructive-600"
@@ -233,16 +233,16 @@ const Step3TeamSizeForm: React.FC = () => {
 						aria-live="polite"
 					>
 						<AlertCircle className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
-						{validation.teamSize.error}
+						{validation.team_size.error}
 					</div>
 				)}
 
 				{/* Success message for screen readers */}
-				{formData.teamSize && !validation.teamSize.error && (
+				{formData.team_size && !validation.team_size.error && (
 					<div className="sr-only" role="status" aria-live="polite">
 						Team size selected:{' '}
 						{
-							teamSizeOptions.find(opt => opt.value === formData.teamSize)
+							teamSizeOptions.find(opt => opt.value === formData.team_size)
 								?.label
 						}
 					</div>
