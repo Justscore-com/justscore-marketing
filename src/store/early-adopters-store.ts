@@ -94,7 +94,7 @@ interface EarlyAdoptersState {
 	validateIndustry: () => boolean;
 	validateCurrentStep: () => boolean;
 
-	// Submission actions
+	// Submission actions test
 	submitForm: () => Promise<void>;
 
 	// Social sharing
