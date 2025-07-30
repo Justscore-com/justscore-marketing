@@ -71,7 +71,7 @@ interface EarlyAdoptersState {
 	isSubmitted: boolean;
 	submitError: string | null;
 
-	// Social sharing state
+	// Social sharing
 	hasShared: boolean;
 
 	// Actions
