@@ -34,7 +34,7 @@ export default function ComingSoonPage() {
 				<div className="absolute inset-0 flex flex-col items-center justify-center text-center space-y-6 px-8 -ml-8 lg:-ml-24">
 					{/* Almost ready text */}
 					<div>
-						<p className="text-white marketing-h6">Almost ready...!</p>
+						<p className="text-white marketing-h6">Almost ready.....!</p>
 					</div>
 				</div>
 			</div>
