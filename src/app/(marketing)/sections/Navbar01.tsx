@@ -90,11 +90,12 @@ export const Navbar = () => {
 				<div className="flex items-center gap-6 mt-1">
 					<div className="flex items-center gap-6">
 						<NavLink
-							href="#contact"
+							href="mailto:hello@justscore.com?subject=Hello%20Justscore team"
 							className="text-xs transition-all duration-300"
 						>
 							Contact us
 						</NavLink>
+
 						<div
 							className={cn(
 								'overflow-hidden transition-all duration-300 ease-out',
