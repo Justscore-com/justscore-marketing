@@ -29,15 +29,14 @@ export type Industry =
 export type EarlyAdopterStep = 1 | 2 | 3 | 4 | 5;
 
 export interface EarlyAdopterFormData {
-	company_email_address: string;
 	role: UserRole | null;
 	team_size: TeamSize | null;
 	requestor_industry: Industry | null;
-	email?: string | null;
+	email: string;
 }
 
 export interface EarlyAdopterValidation {
-	company_email_address: {
+	email: {
 		isValid: boolean;
 		error: string | null;
 	};
@@ -107,7 +106,6 @@ interface EarlyAdoptersState {
 
 // Initial state values
 const initialFormData: EarlyAdopterFormData = {
-	company_email_address: '',
 	role: null,
 	team_size: null,
 	requestor_industry: null,
@@ -115,7 +113,7 @@ const initialFormData: EarlyAdopterFormData = {
 };
 
 const initialValidation: EarlyAdopterValidation = {
-	company_email_address: { isValid: false, error: null },
+	email: { isValid: false, error: null },
 	role: { isValid: false, error: null },
 	team_size: { isValid: false, error: null },
 	requestor_industry: { isValid: false, error: null },
@@ -207,11 +205,11 @@ export const useEarlyAdoptersStore = create<EarlyAdoptersState>()(
 			updateEmail: email => {
 				set(
 					state => ({
-						formData: { ...state.formData, company_email_address: email },
+						formData: { ...state.formData, email: email },
 						// Clear validation error when user starts typing
 						validation: {
 							...state.validation,
-							company_email_address: { isValid: false, error: null },
+							email: { isValid: false, error: null },
 						},
 					}),
 					false,
@@ -264,7 +262,7 @@ export const useEarlyAdoptersStore = create<EarlyAdoptersState>()(
 			// Validation actions
 			validateEmail: () => {
 				const { formData } = get();
-				const email = formData.company_email_address.trim();
+				const email = formData.email.trim();
 
 				let isValid = false;
 				let error: string | null = null;
@@ -281,7 +279,7 @@ export const useEarlyAdoptersStore = create<EarlyAdoptersState>()(
 					state => ({
 						validation: {
 							...state.validation,
-							company_email_address: { isValid, error },
+							email: { isValid, error },
 						},
 					}),
 					false,

@@ -34,7 +34,7 @@ const industryMap: Record<string, string> = {
 };
 
 interface FormSubmissionBody {
-	company_email_address: string;
+	email: string;
 	role: string;
 	team_size: string;
 	requestor_industry: string;
@@ -70,7 +70,7 @@ export async function POST(request: Request) {
 		console.log('Form submission details:', body);
 
 		const {
-			company_email_address,
+			email,
 			role,
 			team_size,
 			requestor_industry,
@@ -82,7 +82,7 @@ export async function POST(request: Request) {
 		} = body;
 
 		// Validate required fields
-		if (!company_email_address) {
+		if (!email) {
 			return NextResponse.json(
 				{
 					error: 'Missing required fields',
@@ -116,8 +116,8 @@ export async function POST(request: Request) {
 
 		// Prepare form fields for HubSpot Forms API
 		const formFields: HubSpotFormField[] = [
-			{ name: 'email', value: company_email_address }, // Use 'email' as the standard field name
-			{ name: 'company_email_address', value: company_email_address }, // Also send as custom field if needed
+			{ name: 'email', value: email }, // Use 'email' as the standard field name
+			{ name: 'email', value: email }, // Also send as custom field if needed
 			{ name: 'role', value: mappedRole },
 			{ name: 'team_size', value: mappedTeamSize },
 			{ name: 'industry', value: mappedIndustry },

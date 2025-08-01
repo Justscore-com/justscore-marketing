@@ -30,19 +30,19 @@ const Step1EmailForm: React.FC = () => {
 			updateEmail(email);
 
 			// Clear error state when user starts typing
-			if (validation.company_email_address.error && email.length > 0) {
+			if (validation.email.error && email.length > 0) {
 				// This will be handled by the store, but we ensure good UX
 			}
 		},
-		[updateEmail, validation.company_email_address.error]
+		[updateEmail, validation.email.error]
 	);
 
 	const handleEmailBlur = useCallback(() => {
 		// Only validate if user has entered something
-		if (formData.company_email_address.trim()) {
+		if (formData.email.trim()) {
 			validateEmail();
 		}
-	}, [formData.company_email_address, validateEmail]);
+	}, [formData.email, validateEmail]);
 
 	const handleKeyDown = useCallback(
 		(e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -81,14 +81,14 @@ const Step1EmailForm: React.FC = () => {
 	// Announce validation errors to screen readers
 	useEffect(() => {
 		if (
-			validation.company_email_address.error &&
-			validation.company_email_address.error !== previousErrorRef.current
+			validation.email.error &&
+			validation.email.error !== previousErrorRef.current
 		) {
-			previousErrorRef.current = validation.company_email_address.error;
+			previousErrorRef.current = validation.email.error;
 
 			// Create announcement for screen readers
 			if (errorAnnouncementRef.current) {
-				errorAnnouncementRef.current.textContent = `Error: ${validation.company_email_address.error}`;
+				errorAnnouncementRef.current.textContent = `Error: ${validation.email.error}`;
 			}
 
 			// Also announce via temporary live region for immediate feedback
@@ -96,7 +96,7 @@ const Step1EmailForm: React.FC = () => {
 			announcer.setAttribute('aria-live', 'assertive');
 			announcer.setAttribute('aria-atomic', 'true');
 			announcer.className = 'sr-only';
-			announcer.textContent = `Email validation error: ${validation.company_email_address.error}`;
+			announcer.textContent = `Email validation error: ${validation.email.error}`;
 
 			document.body.appendChild(announcer);
 
@@ -105,13 +105,13 @@ const Step1EmailForm: React.FC = () => {
 					document.body.removeChild(announcer);
 				}
 			}, 1000);
-		} else if (!validation.company_email_address.error) {
+		} else if (!validation.email.error) {
 			previousErrorRef.current = '';
 			if (errorAnnouncementRef.current) {
 				errorAnnouncementRef.current.textContent = '';
 			}
 		}
-	}, [validation.company_email_address.error]);
+	}, [validation.email.error]);
 
 	return (
 		<div>
@@ -142,21 +142,21 @@ const Step1EmailForm: React.FC = () => {
 							type="email"
 							inputSize="lg"
 							placeholder="your.email@company.com"
-							value={formData.company_email_address}
+							value={formData.email}
 							onChange={handleEmailChange}
 							onBlur={handleEmailBlur}
 							onKeyDown={handleKeyDown}
 							className={cn(
 								'pl-12',
-								validation.company_email_address.error
+								validation.email.error
 									? 'border-destructive-400 focus-visible:ring-destructive-400'
-									: validation.company_email_address.isValid
+									: validation.email.isValid
 										? 'border-primary-400 focus-visible:ring-primary-400'
 										: ''
 							)}
-							aria-invalid={!!validation.company_email_address.error}
+							aria-invalid={!!validation.email.error}
 							aria-describedby={`${
-								validation.company_email_address.error ? 'email-error' : ''
+								validation.email.error ? 'email-error' : ''
 							} email-help`.trim()}
 							aria-required="true"
 							autoComplete="email"
@@ -173,7 +173,7 @@ const Step1EmailForm: React.FC = () => {
 						</div>
 
 						{/* Validation status icon */}
-						{validation.company_email_address.error && (
+						{validation.email.error && (
 							<div className="absolute right-4 top-1/2 -translate-y-1/2">
 								<AlertCircle
 									className="size-5 text-destructive-500"
@@ -184,7 +184,7 @@ const Step1EmailForm: React.FC = () => {
 					</div>
 
 					{/* Error message */}
-					{validation.company_email_address.error && (
+					{validation.email.error && (
 						<div
 							id="email-error"
 							className="flex items-center gap-2 text-sm text-destructive-600"
@@ -195,14 +195,14 @@ const Step1EmailForm: React.FC = () => {
 								className="w-4 h-4 flex-shrink-0"
 								aria-hidden="true"
 							/>
-							{validation.company_email_address.error}
+							{validation.email.error}
 						</div>
 					)}
 
 					{/* Success message for screen readers */}
-					{validation.company_email_address.isValid &&
-						!validation.company_email_address.error &&
-						formData.company_email_address && (
+					{validation.email.isValid &&
+						!validation.email.error &&
+						formData.email && (
 							<div className="sr-only" role="status" aria-live="polite">
 								Email address is valid
 							</div>
