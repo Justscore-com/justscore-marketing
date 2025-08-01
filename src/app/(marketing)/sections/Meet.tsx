@@ -31,7 +31,7 @@ export function Meet() {
 					{/* Mobile Layout (SM) */}
 					<div className="block md:hidden space-y-4">
 						{/* First: handlinPhone block */}
-						<div className="bg-gradient-to-br from-primary-400 to-secondary-200 rounded-3xl p-6 relative h-36 mt-8">
+						<div className="bg-gradient-to-r from-secondary-200 via-secondary-400 to-secondary-200 rounded-3xl p-6 relative h-36 mt-8">
 							<div className="sr-only">
 								<h3>JustScore Mobile Experience</h3>
 								<p>
@@ -48,7 +48,7 @@ export function Meet() {
 						</div>
 
 						{/* Second: Mobile and Desktop block */}
-						<div className="bg-gradient-to-br from-primary-300 via-secondary-300 to-primary-300 rounded-3xl p-6 relative h-64">
+						<div className="bg-gradient-to-br from-secondary-200 via-secondary-400 to-secondary-200 rounded-3xl p-6 relative h-64">
 							<div className="flex flex-col h-full">
 								<h3 className="block marketing-h3 text-secondary-950">
 									Mobile and Desktop
@@ -67,9 +67,9 @@ export function Meet() {
 						</div>
 
 						{/* Third: 90% Statistics block */}
-						<div className="bg-gradient-to-br from-tertiary-200 from-5% to-secondary-400 rounded-3xl p-6 pt-4 flex flex-col justify-between">
+						<div className="bg-gradient-to-br from-tertiary-200 to-secondary-400 rounded-3xl p-6 pt-4 flex flex-col justify-between">
 							<div>
-								<div className="flex items-baseline gap-1 mb-2">
+								<div className="flex items-baseline gap-1 mb-1">
 									<span
 										className="marketing-display text-tertiary-950"
 										aria-label="90 percent"
@@ -90,9 +90,9 @@ export function Meet() {
 						</div>
 
 						{/* Fourth: 75% Statistics block */}
-						<div className="bg-gradient-to-br from-secondary-200 from-25% to-secondary-400 rounded-3xl p-6 pt-4 flex flex-col justify-between">
+						<div className="bg-gradient-to-tl from-tertiary-200 via-secondary-300 to-secondary-200 rounded-3xl p-6 pt-4 flex flex-col justify-between">
 							<div>
-								<div className="flex items-baseline gap-1 mb-2">
+								<div className="flex items-baseline gap-1 mb-1">
 									<span
 										className="marketing-display text-secondary-950"
 										aria-label="75 percent"
@@ -115,7 +115,7 @@ export function Meet() {
 
 						{/* Fifth: Two columns - Designed by Managers and Powered by AI */}
 						<div className="grid grid-cols-2 gap-4">
-							<div className="bg-gradient-to-bl from-secondary-400 to-secondary-100 rounded-3xl p-6">
+							<div className="bg-gradient-to-tr from-secondary-400 to-secondary-200 rounded-3xl p-6">
 								<div className="flex flex-col h-full">
 									<h3 className="marketing-h6 text-secondary-950">
 										Designed by Managers
@@ -126,7 +126,7 @@ export function Meet() {
 									</p>
 								</div>
 							</div>
-							<div className="bg-gradient-to-br from-secondary-300 via-secondary-200 via-20% to-tertiary-200 to-95% rounded-3xl p-6">
+							<div className="bg-gradient-to-tr from-secondary-300 via-secondary-200 via-20% to-tertiary-200 to-95% rounded-3xl p-6">
 								<div className="flex flex-col h-full">
 									<h3 className="marketing-h6 text-secondary-950">
 										Powered by AI
@@ -145,7 +145,7 @@ export function Meet() {
 						{/* First row: 3-column grid with first three blocks */}
 						<div className="grid grid-cols-3 gap-4">
 							{/* First: handlinPhone block - spans 2 columns */}
-							<div className="col-span-2 bg-gradient-to-br from-primary-400 to-secondary-200 rounded-3xl p-6 relative h-56">
+							<div className="col-span-2 bg-gradient-to-br from-secondary-400 to-secondary-200 rounded-3xl p-6 relative h-56">
 								<div className="sr-only">
 									<h3>JustScore Mobile Experience</h3>
 									<p>
@@ -163,7 +163,7 @@ export function Meet() {
 							</div>
 
 							{/* Third: Powered by AI block - spans 1 column */}
-							<div className="col-span-1 bg-gradient-to-br from-secondary-300 via-secondary-200 via-20% to-tertiary-200 to-95% rounded-3xl p-8 h-56">
+							<div className="col-span-1 bg-gradient-to-tr from-secondary-200 via-secondary-300 to-tertiary-200 to-95% rounded-3xl p-8 h-56">
 								<div className="text-center flex flex-col justify-center items-center h-full">
 									<h3 className="marketing-h5 text-secondary-950">
 										Powered by AI
@@ -177,7 +177,7 @@ export function Meet() {
 						</div>
 
 						{/* Second row: Mobile and Desktop block - spans full width */}
-						<div className="bg-gradient-to-br from-primary-300 via-secondary-300 to-primary-300 rounded-3xl p-6 relative h-72">
+						<div className="bg-gradient-to-br from-secondary-200 via-secondary-400 to-secondary-200 rounded-3xl p-6 relative h-72">
 							<div className="flex flex-col h-full">
 								<h3 className="block marketing-h3 text-secondary-950">
 									Mobile and Desktop
@@ -197,7 +197,7 @@ export function Meet() {
 
 						{/* Third row: Two columns - Statistics */}
 						<div className="grid grid-cols-2 gap-4">
-							<div className="bg-gradient-to-br from-tertiary-200 from-25% to-secondary-400 rounded-3xl p-6 flex flex-col justify-between h-56">
+							<div className="bg-gradient-to-tr from-tertiary-300 from-20% to-secondary-200 to-80% rounded-3xl p-6 flex flex-col justify-between h-56">
 								<div>
 									<div className="flex items-baseline gap-1 mb-2">
 										<span
@@ -218,7 +218,7 @@ export function Meet() {
 									</cite>
 								</div>
 							</div>
-							<div className="bg-gradient-to-br from-secondary-300 via-secondary-200 via-20% to-tertiary-200 to-95% rounded-3xl p-6 h-full">
+							<div className="bg-gradient-to-br from-secondary-200 via-secondary-200 to-tertiary-200 to-95% rounded-3xl p-6 h-full">
 								<div className="flex flex-col space-y-0">
 									<div className="flex items-baseline gap-1 mb-2">
 										<span
@@ -265,7 +265,7 @@ export function Meet() {
 						{/* First row - Statistics card spans 2 rows */}
 						<div className="col-span-2 row-span-2 bg-gradient-to-br from-tertiary-200 from-25% to-secondary-400 rounded-3xl p-6 flex flex-col justify-between">
 							<div>
-								<div className="flex items-baseline gap-1 mb-2">
+								<div className="flex items-baseline gap-1 mb-1">
 									<span
 										className="marketing-h1 text-tertiary-950"
 										aria-label="90 percent"
@@ -285,7 +285,7 @@ export function Meet() {
 							</div>
 						</div>
 
-						<div className="col-span-6 bg-gradient-to-br from-primary-400 to-secondary-200 rounded-3xl p-6 relative">
+						<div className="col-span-6 bg-gradient-to-r from-secondary-200 via-secondary-400 to-secondary-200 rounded-3xl p-6 relative">
 							<div className="sr-only">
 								<h3>JustScore Mobile Experience</h3>
 								<p>
@@ -301,9 +301,9 @@ export function Meet() {
 							/>
 						</div>
 
-						<div className="col-span-2 bg-gradient-to-bl from-primary-200 to-secondary-400 rounded-3xl p-6">
-							<div className="flex flex-col space-y-3">
-								<h3 className="marketing-h6 text-secondary-950">
+						<div className="col-span-2 bg-gradient-to-tr from-secondary-200 via-secondary-300 to-tertiary-200 rounded-3xl p-6">
+							<div className="flex flex-col space-y-2">
+								<h3 className="marketing-h5 text-secondary-950">
 									Designed by Managers
 								</h3>
 								<p className="marketing-body-sm leading-snug text-secondary-950">
@@ -314,12 +314,12 @@ export function Meet() {
 						</div>
 
 						{/* Second row - Mobile/Desktop card spans 2 rows */}
-						<div className="row-start-2 col-start-3 col-span-5 row-span-2 bg-gradient-to-br from-primary-300 via-secondary-300 to-primary-300 rounded-3xl p-6 relative">
+						<div className="row-start-2 col-start-3 col-span-5 row-span-2 bg-gradient-to-br from-secondary-200 via-secondary-400 to-secondary-200 rounded-3xl p-6 relative">
 							<div className="flex flex-col h-full">
 								<h3 className="marketing-h3 text-secondary-950">
 									Mobile and Desktop
 								</h3>
-								<p className="marketing-body-lg text-secondary-900 mt-2">
+								<p className="marketing-body-lg text-secondary-900 mt-1">
 									Two optimised experiences.
 								</p>
 							</div>
@@ -337,7 +337,7 @@ export function Meet() {
 								<h3 className="marketing-h5 text-secondary-950">
 									Powered by AI
 								</h3>
-								<p className="marketing-body-sm text-secondary-900 mt-2">
+								<p className="marketing-body-sm text-secondary-900 mt-1">
 									A super brain at your disposal to deliver all the needed
 									insights and outcomes.
 								</p>
@@ -356,10 +356,10 @@ export function Meet() {
 
 						<div className="row-start-3 col-start-8 col-span-3 space-y-4">
 							<div className="bg-gradient-to-br from-secondary-300 via-secondary-200 via-20% to-tertiary-200 to-95% rounded-3xl p-6 pt-4 h-full">
-								<div className="flex flex-col space-y-0">
-									<div className="flex items-baseline gap-1 mb-2">
+								<div className="flex flex-col">
+									<div className="flex items-baseline gap-1 mb-1">
 										<span
-											className="marketing-h2 text-secondary-950"
+											className="marketing-h3 text-secondary-950 leading-none"
 											aria-label="75 percent"
 										>
 											75
@@ -369,7 +369,7 @@ export function Meet() {
 										</span>
 									</div>
 									<div>
-										<p className="marketing-body-sm text-tertiary-950 mt-1 leading-snug">
+										<p className="marketing-body-sm text-tertiary-950 leading-snug">
 											of organisations say managers fail to measure value beyond
 											basic metrics—costing millions in lost potential.
 										</p>
@@ -452,7 +452,7 @@ export function Meet() {
 								</div>
 							</div>
 
-							<div className="col-start-3 row-start-1 col-span-2 row-span-1 bg-gradient-to-br from-primary-400 to-secondary-200 rounded-3xl p-6 relative">
+							<div className="col-start-3 row-start-1 col-span-2 row-span-1 bg-gradient-to-br from-secondary-300 via-secondary-500 to-secondary-300 rounded-3xl p-6 relative">
 								<div className="sr-only">
 									<h3>JustScore Mobile Experience</h3>
 									<p>
@@ -469,7 +469,7 @@ export function Meet() {
 								/>
 							</div>
 
-							<div className="col-start-1 row-start-5 md:col-start-5 md:row-start-1 md:col-span-1 md:row-span-1 bg-gradient-to-bl from-primary-200 to-secondary-400 rounded-3xl p-6">
+							<div className="col-start-1 row-start-5 md:col-start-5 md:row-start-1 md:col-span-1 md:row-span-1 bg-gradient-to-br from-secondary-300 via-secondary-200 to-tertiary-300 rounded-3xl p-6">
 								<div className="flex flex-col space-y-3">
 									<h3 className="marketing-h5 text-secondary-950">
 										Designed by Managers
@@ -481,7 +481,7 @@ export function Meet() {
 								</div>
 							</div>
 
-							<div className="col-start-1 row-start-6 md:col-start-4 md:row-start-2 md:col-span-2 md:row-span-1 bg-gradient-to-bl from-tertiary-200 to-secondary-400 rounded-3xl p-6">
+							<div className="col-start-1 row-start-6 md:col-start-4 md:row-start-2 md:col-span-2 md:row-span-1 bg-gradient-to-bl from-tertiary-200 via-secondary-300 to-secondary-300 rounded-3xl p-6">
 								<div className="flex flex-row gap-5 h-full space-y-3">
 									<div className="flex items-baseline gap-1">
 										<span
