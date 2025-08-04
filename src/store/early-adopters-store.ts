@@ -29,15 +29,14 @@ export type Industry =
 export type EarlyAdopterStep = 1 | 2 | 3 | 4 | 5;
 
 export interface EarlyAdopterFormData {
-	company_email_address: string;
 	role: UserRole | null;
 	team_size: TeamSize | null;
 	requestor_industry: Industry | null;
-	email?: string | null;
+	email: string;
 }
 
 export interface EarlyAdopterValidation {
-	company_email_address: {
+	email: {
 		isValid: boolean;
 		error: string | null;
 	};
@@ -71,6 +70,14 @@ interface EarlyAdoptersState {
 	isSubmitted: boolean;
 	submitError: string | null;
 
+	// Duplicate email check state
+	isCheckingDuplicate: boolean;
+	duplicateCheckResult: {
+		alreadyRegistered: boolean;
+		registrationDate?: string;
+		contactName?: string;
+	} | null;
+
 	// Social sharing
 	hasShared: boolean;
 
@@ -97,6 +104,9 @@ interface EarlyAdoptersState {
 	// Submission actions test
 	submitForm: () => Promise<void>;
 
+	// Duplicate email check
+	checkDuplicateEmail: (email: string) => Promise<boolean>;
+
 	// Social sharing
 	markAsShared: () => void;
 
@@ -107,7 +117,6 @@ interface EarlyAdoptersState {
 
 // Initial state values
 const initialFormData: EarlyAdopterFormData = {
-	company_email_address: '',
 	role: null,
 	team_size: null,
 	requestor_industry: null,
@@ -115,7 +124,7 @@ const initialFormData: EarlyAdopterFormData = {
 };
 
 const initialValidation: EarlyAdopterValidation = {
-	company_email_address: { isValid: false, error: null },
+	email: { isValid: false, error: null },
 	role: { isValid: false, error: null },
 	team_size: { isValid: false, error: null },
 	requestor_industry: { isValid: false, error: null },
@@ -138,6 +147,8 @@ export const useEarlyAdoptersStore = create<EarlyAdoptersState>()(
 			isSubmitting: false,
 			isSubmitted: false,
 			submitError: null,
+			isCheckingDuplicate: false,
+			duplicateCheckResult: null,
 			hasShared: false,
 
 			// Modal actions
@@ -151,6 +162,8 @@ export const useEarlyAdoptersStore = create<EarlyAdoptersState>()(
 						validation: initialValidation,
 						isSubmitted: false,
 						submitError: null,
+						isCheckingDuplicate: false,
+						duplicateCheckResult: null,
 						hasShared: false,
 					}),
 					false,
@@ -207,11 +220,11 @@ export const useEarlyAdoptersStore = create<EarlyAdoptersState>()(
 			updateEmail: email => {
 				set(
 					state => ({
-						formData: { ...state.formData, company_email_address: email },
+						formData: { ...state.formData, email: email },
 						// Clear validation error when user starts typing
 						validation: {
 							...state.validation,
-							company_email_address: { isValid: false, error: null },
+							email: { isValid: false, error: null },
 						},
 					}),
 					false,
@@ -264,7 +277,7 @@ export const useEarlyAdoptersStore = create<EarlyAdoptersState>()(
 			// Validation actions
 			validateEmail: () => {
 				const { formData } = get();
-				const email = formData.company_email_address.trim();
+				const email = formData.email.trim();
 
 				let isValid = false;
 				let error: string | null = null;
@@ -281,7 +294,7 @@ export const useEarlyAdoptersStore = create<EarlyAdoptersState>()(
 					state => ({
 						validation: {
 							...state.validation,
-							company_email_address: { isValid, error },
+							email: { isValid, error },
 						},
 					}),
 					false,
@@ -373,6 +386,76 @@ export const useEarlyAdoptersStore = create<EarlyAdoptersState>()(
 				}
 			},
 
+			// Duplicate email check
+			checkDuplicateEmail: async (email: string) => {
+				set(
+					() => ({
+						isCheckingDuplicate: true,
+						duplicateCheckResult: null,
+						submitError: null,
+					}),
+					false,
+					'checkDuplicateEmail:start'
+				);
+
+				try {
+					const response = await fetch('/api/hubspot-crm', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({ email }),
+					});
+
+					const result = await response.json();
+
+					if (result.alreadyRegistered) {
+						// User is already registered
+						set(
+							() => ({
+								isCheckingDuplicate: false,
+								duplicateCheckResult: {
+									alreadyRegistered: true,
+									registrationDate: result.details?.registrationDate,
+									contactName: result.details?.contactName,
+								},
+							}),
+							false,
+							'checkDuplicateEmail:already_registered'
+						);
+						return false; // Cannot proceed
+					} else {
+						// Email is available, proceed to next step
+						set(
+							() => ({
+								isCheckingDuplicate: false,
+								duplicateCheckResult: {
+									alreadyRegistered: false,
+								},
+							}),
+							false,
+							'checkDuplicateEmail:available'
+						);
+						return true; // Can proceed
+					}
+				} catch (error) {
+					console.error('Error checking duplicate email:', error);
+
+					// If duplicate check fails, allow them to proceed
+					// (better UX than blocking the user)
+					set(
+						() => ({
+							isCheckingDuplicate: false,
+							duplicateCheckResult: null,
+							submitError: 'Unable to verify email. Please try again.',
+						}),
+						false,
+						'checkDuplicateEmail:error'
+					);
+					return true; // Allow to proceed despite error
+				}
+			},
+
 			// Submission action (placeholder for now)
 			submitForm: async () => {
 				const {
@@ -456,6 +539,8 @@ export const useEarlyAdoptersStore = create<EarlyAdoptersState>()(
 						validation: initialValidation,
 						isSubmitted: false,
 						submitError: null,
+						isCheckingDuplicate: false,
+						duplicateCheckResult: null,
 						hasShared: false,
 					}),
 					false,
@@ -473,6 +558,8 @@ export const useEarlyAdoptersStore = create<EarlyAdoptersState>()(
 						isSubmitting: false,
 						isSubmitted: false,
 						submitError: null,
+						isCheckingDuplicate: false,
+						duplicateCheckResult: null,
 						hasShared: false,
 					}),
 					false,

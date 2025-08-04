@@ -49,10 +49,10 @@ export async function POST(request: Request) {
 
 		console.log('form_details', body);
 
-		const { company_email_address, role, team_size, requestor_industry } = body;
+		const { email, role, team_size, requestor_industry } = body;
 
 		// Validate required fields
-		if (!company_email_address) {
+		if (!email) {
 			return NextResponse.json(
 				{
 					error: 'Missing required fields',
@@ -75,7 +75,7 @@ export async function POST(request: Request) {
 								{
 									propertyName: 'email',
 									operator: 'EQ' as any,
-									value: company_email_address,
+									value: email,
 								},
 							],
 						},
@@ -101,7 +101,7 @@ export async function POST(request: Request) {
 
 		// Prepare contact properties
 		const contactProperties = {
-			company_email_address: company_email_address,
+			email: email,
 			role: mappedRole,
 			team_size: mappedTeamSize,
 			industry: mappedIndustry,

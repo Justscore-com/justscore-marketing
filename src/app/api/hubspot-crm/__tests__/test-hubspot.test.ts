@@ -44,7 +44,7 @@ describe('HubSpot CRM API', () => {
 	const testEmail = `test.${Date.now()}@example.com`;
 
 	const testData = {
-		company_email_address: testEmail,
+		email: testEmail,
 		role: 'Manager',
 		team_size: '6-10', // This will be mapped to '6_10_people' in the API
 		requestor_industry: 'Technology',
