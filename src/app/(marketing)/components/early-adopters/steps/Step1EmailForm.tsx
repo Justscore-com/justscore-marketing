@@ -238,7 +238,7 @@ const Step1EmailForm: React.FC = () => {
 								aria-hidden="true"
 							/>
 							<div className="flex-1">
-								<p className="font-medium">You're already registered!</p>
+								<p className="font-medium">You are already registered!</p>
 								<p className="text-amber-600 mt-1">
 									You joined our Early Access Program{' '}
 									{duplicateCheckResult.registrationDate && (
@@ -247,7 +247,7 @@ const Step1EmailForm: React.FC = () => {
 									{duplicateCheckResult.contactName && (
 										<> as {duplicateCheckResult.contactName}</>
 									)}
-									. We'll notify you as soon as early access is available.
+									. We will notify you as soon as early access is available.
 								</p>
 								<button
 									type="button"
