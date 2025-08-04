@@ -18,7 +18,7 @@ export default function RootLayout({
 		<html lang="en" suppressHydrationWarning>
 			<head>
 				{/* Google Tag Manager */}
-				<script 
+				<script
 					dangerouslySetInnerHTML={{
 						__html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 						new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -28,7 +28,20 @@ export default function RootLayout({
 					}}
 				/>
 				{/* End Google Tag Manager */}
-				
+				{/* Hotjar Tracking Code */}
+				<script
+					dangerouslySetInnerHTML={{
+						__html: `(function(h,o,t,j,a,r){
+						h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+						h._hjSettings={hjid:6483401,hjsv:6};
+						a=o.getElementsByTagName('head')[0];
+						r=o.createElement('script');r.async=1;
+						r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+						a.appendChild(r);
+					})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`
+					}}
+				/>
+
 				{/* Preload critical font variants for optimal performance */}
 				<link
 					rel="preload"
@@ -66,15 +79,15 @@ export default function RootLayout({
 			<body className="antialiased">
 				{/* Google Tag Manager (noscript) */}
 				<noscript>
-					<iframe 
+					<iframe
 						src="https://www.googletagmanager.com/ns.html?id=GTM-5X8NMTFR"
-						height="0" 
-						width="0" 
-						style={{display: 'none', visibility: 'hidden'}}
+						height="0"
+						width="0"
+						style={{ display: 'none', visibility: 'hidden' }}
 					/>
 				</noscript>
 				{/* End Google Tag Manager (noscript) */}
-				
+
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"

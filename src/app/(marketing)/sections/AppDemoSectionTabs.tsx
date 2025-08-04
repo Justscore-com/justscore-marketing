@@ -42,7 +42,7 @@ const DEMO_TABS_CONFIG: HeroTabItem[] = [
 const TAB_CONTENT_CONFIG = [
 	{
 		id: 'score-performance',
-		title: 'Select the actions that matter to your team.',
+		title: 'Select the actions that matter to your org and team.',
 		subtitle: 'Clarify the actions that drive team performance',
 		description:
 			"Create a clear list of meaningful actions and behaviours that reflect your organisation's values, culture, and functions. Select from a curated list to ensure every action is relevant, impactful, and clearly understood by your team.",
@@ -304,7 +304,7 @@ export const AppDemoSectionTabs: React.FC<AppDemoSectionTabsProps> = ({
 											className="flex items-start gap-3 marketing-body"
 										>
 											<div
-												className="size-2.5 bg-primary-400 rounded-full mt-1.5 flex-shrink-0"
+												className="size-2.5 bg-primary-400 rounded-full lg:mt-2 flex-shrink-0"
 												aria-hidden="true"
 											/>
 											{highlight}

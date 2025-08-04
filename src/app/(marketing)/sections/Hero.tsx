@@ -99,7 +99,7 @@ export const Hero = () => {
 				<div className="max-w-4xl mx-auto space-y-6 md:space-y-8 text-center">
 					{/* Badge */}
 					<div role="region" aria-label="Product positioning">
-						<Badge variant="primary-light">Designed for people Leaders</Badge>
+						<Badge variant="primary-light">Designed for People Managers</Badge>
 					</div>
 
 					{/* Main Heading - FIXED: Only H1 on the page */}
