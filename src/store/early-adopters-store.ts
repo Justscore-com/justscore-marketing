@@ -386,7 +386,7 @@ export const useEarlyAdoptersStore = create<EarlyAdoptersState>()(
 				}
 			},
 
-			// Duplicate email check
+			// Duplicate email check (validation only, no form submission)
 			checkDuplicateEmail: async (email: string) => {
 				set(
 					() => ({
@@ -399,7 +399,8 @@ export const useEarlyAdoptersStore = create<EarlyAdoptersState>()(
 				);
 
 				try {
-					const response = await fetch('/api/hubspot-crm', {
+					// Call the email validation endpoint (NOT the form submission endpoint)
+					const response = await fetch('/api/hubspot-crm/check-email', {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',
