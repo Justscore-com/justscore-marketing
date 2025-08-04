@@ -5,14 +5,54 @@ const hubspotClient = new HubspotClient({
 	accessToken: process.env.HUBSPOT_ACCESS_TOKEN,
 });
 
+// Map our team size values to HubSpot's allowed options
+const teamSizeMap: Record<string, string> = {
+	'1-5': '1_5_people',
+	'6-10': '6_10_people',
+	'11-15': '11_15_people',
+	'16+': '16_plus_people',
+};
+
+// Map our role values to HubSpot's allowed options
+const roleMap: Record<string, string> = {
+	'Chief X Officer': 'chief_officer',
+	VP: 'vice_president',
+	'Snr Director': 'senior_director',
+	Director: 'director',
+	'Snr Manager': 'senior_manager',
+	Manager: 'manager',
+	'Team Lead': 'team_lead',
+	Other: 'other',
+};
+
+// Map our industry values to HubSpot's allowed options
+const industryMap: Record<string, string> = {
+	Technology: 'technology',
+	'Financial Services': 'financial_services',
+	Healthcare: 'healthcare',
+	Manufacturing: 'manufacturing',
+	'Retail & E-commerce': 'retail_ecommerce',
+	'Professional Services': 'professional_services',
+	Education: 'education',
+	'Media & Entertainment': 'media_entertainment',
+	Other: 'other',
+};
+
 export async function POST(request: Request) {
 	try {
 		const body = await request.json();
 
-		const { company_email_address, role, team_size, requestor_industry } = body;
+		console.log('Environment check:', {
+			hasToken: !!process.env.HUBSPOT_ACCESS_TOKEN,
+			tokenLength: process.env.HUBSPOT_ACCESS_TOKEN?.length,
+		});
+
+		console.log('form_details', body);
+
+		const { email, role, team_size, requestor_industry } = body;
 
 		// Validate required fields
-		if (!company_email_address) {
+		if (!email) {
 			return NextResponse.json(
 				{
 					error: 'Missing required fields',
@@ -34,8 +74,8 @@ export async function POST(request: Request) {
 							filters: [
 								{
 									propertyName: 'email',
-									operator: 'EQ' as any, // Using type assertion since the enum is not exported
-									value: company_email_address,
+									operator: 'EQ' as any,
+									value: email,
 								},
 							],
 						},
@@ -54,15 +94,18 @@ export async function POST(request: Request) {
 			}
 		}
 
+		// Map values to HubSpot's allowed options
+		const mappedTeamSize = teamSizeMap[team_size] || '1_5_people';
+		const mappedRole = roleMap[role] || 'other';
+		const mappedIndustry = industryMap[requestor_industry] || 'other';
+
 		// Prepare contact properties
 		const contactProperties = {
-			email: company_email_address,
-			jobtitle: role || '',
-			team_size: team_size || '',
-			industry: requestor_industry || '',
+			email: email,
+			role: mappedRole,
+			team_size: mappedTeamSize,
+			industry: mappedIndustry,
 			lifecyclestage: 'marketingqualifiedlead',
-			hs_lead_source: 'Early Access Program',
-			last_early_access_request_date: new Date().toISOString(),
 		};
 
 		let contact;
@@ -89,8 +132,7 @@ export async function POST(request: Request) {
 				closedate: new Date(
 					Date.now() + 30 * 24 * 60 * 60 * 1000
 				).toISOString(), // 30 days from now
-				deal_description: `Early Access Request\nRole: ${role}\nTeam Size: ${team_size}\nIndustry: ${requestor_industry}`,
-				hs_deal_source: 'Early Access Program',
+				description: `Early Access Request\nRole: ${role}\nTeam Size: ${team_size}\nIndustry: ${requestor_industry}`,
 			};
 
 			deal = await hubspotClient.crm.deals.basicApi.create({
@@ -100,7 +142,7 @@ export async function POST(request: Request) {
 						to: { id: contact.id },
 						types: [
 							{
-								associationCategory: 'HUBSPOT_DEFINED' as any, // Using type assertion since the enum is not exported
+								associationCategory: 'HUBSPOT_DEFINED' as any,
 								associationTypeId: 3,
 							},
 						],

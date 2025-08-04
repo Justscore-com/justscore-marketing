@@ -4,7 +4,7 @@ describe('HubSpot CRM API', () => {
 	const testEmail = `test.${Date.now()}@example.com`;
 
 	const testData = {
-		company_email_address: testEmail,
+		email: testEmail,
 		role: 'Manager',
 		team_size: '6-10',
 		requestor_industry: 'Technology',
