@@ -229,7 +229,7 @@ const Step1EmailForm: React.FC = () => {
 					{/* Duplicate registration message */}
 					{duplicateCheckResult?.alreadyRegistered && (
 						<div
-							className="flex items-start gap-2 text-sm text-amber-700 bg-amber-50 border border-amber-200 rounded-lg p-3"
+							className="flex items-start gap-2 text-sm text-amber-800 bg-amber-50 border border-amber-200 rounded-lg p-3"
 							role="alert"
 							aria-live="polite"
 						>
@@ -239,7 +239,7 @@ const Step1EmailForm: React.FC = () => {
 							/>
 							<div className="flex-1">
 								<p className="font-medium">You are already registered!</p>
-								<p className="text-amber-600 mt-1">
+								<p className="text-amber-800 mt-1">
 									You joined our Early Access Program{' '}
 									{duplicateCheckResult.registrationDate && (
 										<>on {duplicateCheckResult.registrationDate}</>
