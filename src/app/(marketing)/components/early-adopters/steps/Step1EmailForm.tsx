@@ -13,10 +13,14 @@ const Step1EmailForm: React.FC = () => {
 		formData,
 		validation,
 		isSubmitting,
+		isCheckingDuplicate,
+		duplicateCheckResult,
+		submitError,
 		updateEmail,
 		validateEmail,
 		validateCurrentStep,
 		nextStep,
+		checkDuplicateEmail,
 	} = useEarlyAdoptersStore();
 
 	// Refs for focus and announcement management
@@ -63,7 +67,15 @@ const Step1EmailForm: React.FC = () => {
 			}
 			return;
 		}
-		await nextStep();
+
+		// Check for duplicate email registration
+		const canProceed = await checkDuplicateEmail(formData.email);
+
+		if (canProceed) {
+			// Email is available, proceed to next step
+			nextStep();
+		}
+		// If canProceed is false, the duplicate check result will be shown in the UI
 	};
 
 	// Auto-focus the email input when component mounts
@@ -78,17 +90,28 @@ const Step1EmailForm: React.FC = () => {
 		}
 	}, []);
 
-	// Announce validation errors to screen readers
+	// Announce validation errors and duplicate check results to screen readers
 	useEffect(() => {
-		if (
-			validation.email.error &&
-			validation.email.error !== previousErrorRef.current
-		) {
-			previousErrorRef.current = validation.email.error;
+		let announcementText = '';
+
+		if (validation.email.error) {
+			announcementText = `Email validation error: ${validation.email.error}`;
+		} else if (duplicateCheckResult?.alreadyRegistered) {
+			announcementText = `Email already registered: You joined our Early Access Program${
+				duplicateCheckResult.registrationDate
+					? ` on ${duplicateCheckResult.registrationDate}`
+					: ''
+			}. We'll notify you when early access is available.`;
+		} else if (submitError) {
+			announcementText = `Error: ${submitError}`;
+		}
+
+		if (announcementText && announcementText !== previousErrorRef.current) {
+			previousErrorRef.current = announcementText;
 
 			// Create announcement for screen readers
 			if (errorAnnouncementRef.current) {
-				errorAnnouncementRef.current.textContent = `Error: ${validation.email.error}`;
+				errorAnnouncementRef.current.textContent = announcementText;
 			}
 
 			// Also announce via temporary live region for immediate feedback
@@ -96,7 +119,7 @@ const Step1EmailForm: React.FC = () => {
 			announcer.setAttribute('aria-live', 'assertive');
 			announcer.setAttribute('aria-atomic', 'true');
 			announcer.className = 'sr-only';
-			announcer.textContent = `Email validation error: ${validation.email.error}`;
+			announcer.textContent = announcementText;
 
 			document.body.appendChild(announcer);
 
@@ -105,13 +128,17 @@ const Step1EmailForm: React.FC = () => {
 					document.body.removeChild(announcer);
 				}
 			}, 1000);
-		} else if (!validation.email.error) {
+		} else if (
+			!validation.email.error &&
+			!duplicateCheckResult?.alreadyRegistered &&
+			!submitError
+		) {
 			previousErrorRef.current = '';
 			if (errorAnnouncementRef.current) {
 				errorAnnouncementRef.current.textContent = '';
 			}
 		}
-	}, [validation.email.error]);
+	}, [validation.email.error, duplicateCheckResult, submitError]);
 
 	return (
 		<div>
@@ -199,6 +226,66 @@ const Step1EmailForm: React.FC = () => {
 						</div>
 					)}
 
+					{/* Duplicate registration message */}
+					{duplicateCheckResult?.alreadyRegistered && (
+						<div
+							className="flex items-start gap-2 text-sm text-amber-700 bg-amber-50 border border-amber-200 rounded-lg p-3"
+							role="alert"
+							aria-live="polite"
+						>
+							<AlertCircle
+								className="w-4 h-4 flex-shrink-0 mt-0.5"
+								aria-hidden="true"
+							/>
+							<div className="flex-1">
+								<p className="font-medium">You're already registered!</p>
+								<p className="text-amber-600 mt-1">
+									You joined our Early Access Program{' '}
+									{duplicateCheckResult.registrationDate && (
+										<>on {duplicateCheckResult.registrationDate}</>
+									)}
+									{duplicateCheckResult.contactName && (
+										<> as {duplicateCheckResult.contactName}</>
+									)}
+									. We'll notify you as soon as early access is available.
+								</p>
+								<button
+									type="button"
+									onClick={() => {
+										// Reset duplicate check result and focus email input
+										useEarlyAdoptersStore.setState({
+											duplicateCheckResult: null,
+										});
+										if (emailInputRef.current) {
+											emailInputRef.current.focus();
+											emailInputRef.current.select();
+										}
+									}}
+									className="text-amber-800 underline hover:no-underline mt-2 text-xs"
+								>
+									Try a different email
+								</button>
+							</div>
+						</div>
+					)}
+
+					{/* General submit error */}
+					{submitError &&
+						!validation.email.error &&
+						!duplicateCheckResult?.alreadyRegistered && (
+							<div
+								className="flex items-center gap-2 text-sm text-destructive-600"
+								role="alert"
+								aria-live="polite"
+							>
+								<AlertCircle
+									className="w-4 h-4 flex-shrink-0"
+									aria-hidden="true"
+								/>
+								{submitError}
+							</div>
+						)}
+
 					{/* Success message for screen readers */}
 					{validation.email.isValid &&
 						!validation.email.error &&
@@ -221,20 +308,31 @@ const Step1EmailForm: React.FC = () => {
 					variant="primary"
 					size="lg"
 					onClick={handlePrimaryAction}
-					disabled={isSubmitting}
+					disabled={
+						isSubmitting ||
+						isCheckingDuplicate ||
+						duplicateCheckResult?.alreadyRegistered
+					}
 					className="flex items-center gap-2 min-w-[140px]"
 					aria-describedby="continue-button-help"
 				>
-					{isSubmitting ? (
+					{isSubmitting || isCheckingDuplicate ? (
 						<>
 							<div
 								className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"
 								aria-hidden="true"
 							/>
 							<span className="sr-only">
-								Processing your email address, please wait
+								{isCheckingDuplicate
+									? 'Checking if email is already registered, please wait'
+									: 'Processing your email address, please wait'}
 							</span>
-							Processing...
+							{isCheckingDuplicate ? 'Checking...' : 'Processing...'}
+						</>
+					) : duplicateCheckResult?.alreadyRegistered ? (
+						<>
+							Already Registered
+							<AlertCircle aria-hidden="true" className="w-4 h-4" />
 						</>
 					) : (
 						<>
@@ -246,7 +344,9 @@ const Step1EmailForm: React.FC = () => {
 
 				{/* Button help text */}
 				<div id="continue-button-help" className="sr-only">
-					Proceed to role selection after validating your email address
+					{duplicateCheckResult?.alreadyRegistered
+						? 'You are already registered for the Early Access Program'
+						: 'Proceed to role selection after validating your email address'}
 				</div>
 			</div>
 

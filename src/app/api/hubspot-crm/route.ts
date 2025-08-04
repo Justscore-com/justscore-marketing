@@ -1,5 +1,19 @@
 import { NextResponse } from 'next/server';
 
+/**
+ * HubSpot Early Access Program (EAP) Registration API
+ *
+ * Required Environment Variables:
+ * - HUBSPOT_PORTAL_ID: Your HubSpot portal ID
+ * - HUBSPOT_FORM_ID: The form ID for EAP submissions
+ * - HUBSPOT_ACCESS_TOKEN: Private app access token for contact search (prevents duplicates)
+ *
+ * Features:
+ * - Duplicate registration prevention
+ * - Form submission to HubSpot Forms API
+ * - Contact validation using HubSpot Contacts API
+ */
+
 // Map our team size values to HubSpot's allowed options
 const teamSizeMap: Record<string, string> = {
 	'1-5': '1_5_people',
@@ -56,6 +70,95 @@ interface HubSpotFormsResponse {
 	redirectUri?: string;
 }
 
+interface HubSpotContact {
+	id: string;
+	properties: {
+		email: string;
+		firstname?: string;
+		lastname?: string;
+		createdate: string;
+		[key: string]: any;
+	};
+}
+
+interface HubSpotSearchResponse {
+	total: number;
+	results: HubSpotContact[];
+}
+
+/**
+ * Check if a contact already exists in HubSpot by email
+ */
+async function checkExistingContact(
+	email: string
+): Promise<HubSpotContact | null> {
+	try {
+		// Validate environment variables
+		if (!process.env.HUBSPOT_ACCESS_TOKEN) {
+			console.error('Missing HubSpot access token for contact search');
+			return null;
+		}
+
+		console.log(`Checking if contact exists for email: ${email}`);
+
+		const searchResponse = await fetch(
+			`https://api.hubapi.com/crm/v3/objects/contacts/search`,
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${process.env.HUBSPOT_ACCESS_TOKEN}`,
+				},
+				body: JSON.stringify({
+					filterGroups: [
+						{
+							filters: [
+								{
+									propertyName: 'email',
+									operator: 'EQ',
+									value: email,
+								},
+							],
+						},
+					],
+					properties: [
+						'email',
+						'firstname',
+						'lastname',
+						'createdate',
+						'role',
+						'team_size',
+						'industry',
+					],
+					limit: 1,
+				}),
+			}
+		);
+
+		if (!searchResponse.ok) {
+			const errorText = await searchResponse.text();
+			console.error('HubSpot contact search failed:', {
+				status: searchResponse.status,
+				error: errorText,
+			});
+			return null;
+		}
+
+		const searchResult: HubSpotSearchResponse = await searchResponse.json();
+
+		if (searchResult.total > 0 && searchResult.results.length > 0) {
+			console.log(`Found existing contact: ${searchResult.results[0].id}`);
+			return searchResult.results[0];
+		}
+
+		console.log('No existing contact found');
+		return null;
+	} catch (error) {
+		console.error('Error checking existing contact:', error);
+		return null;
+	}
+}
+
 export async function POST(request: Request) {
 	try {
 		const body: FormSubmissionBody = await request.json();
@@ -63,6 +166,7 @@ export async function POST(request: Request) {
 		console.log('Environment check:', {
 			hasPortalId: !!process.env.HUBSPOT_PORTAL_ID,
 			hasFormId: !!process.env.HUBSPOT_FORM_ID,
+			hasAccessToken: !!process.env.HUBSPOT_ACCESS_TOKEN,
 			portalIdLength: process.env.HUBSPOT_PORTAL_ID?.length,
 			formIdLength: process.env.HUBSPOT_FORM_ID?.length,
 		});
@@ -86,9 +190,41 @@ export async function POST(request: Request) {
 			return NextResponse.json(
 				{
 					error: 'Missing required fields',
-					message: 'Company email address is required',
+					message: 'Email address is required',
 				},
 				{ status: 400 }
+			);
+		}
+
+		// Check if user is already registered
+		console.log('Checking for existing registration...');
+		const existingContact = await checkExistingContact(email);
+
+		if (existingContact) {
+			const registrationDate = new Date(
+				existingContact.properties.createdate
+			).toLocaleDateString();
+			const contactName = existingContact.properties.firstname
+				? `${existingContact.properties.firstname} ${existingContact.properties.lastname || ''}`.trim()
+				: email;
+
+			console.log(
+				`User already registered: ${existingContact.id} on ${registrationDate}`
+			);
+
+			return NextResponse.json(
+				{
+					success: false,
+					alreadyRegistered: true,
+					message: `You're already registered for our Early Access Program!`,
+					details: {
+						registrationDate,
+						contactName,
+						email: existingContact.properties.email,
+						contactId: existingContact.id,
+					},
+				},
+				{ status: 200 } // Use 200 since this is a valid response, not an error
 			);
 		}
 
