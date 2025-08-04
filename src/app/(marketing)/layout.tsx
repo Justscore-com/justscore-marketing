@@ -23,9 +23,9 @@ export default function MarketingLayout({ children }: { children: ReactNode }) {
 			</a>
 
 			{/* Header landmark with navigation */}
-			{/* <header role="banner" className="relative z-40">
+			<header role="banner" className="relative z-40">
 				<Navbar />
-			</header> */}
+			</header>
 
 			{/* Main content landmark */}
 			<main id="main-content" role="main" className="relative" tabIndex={-1}>
