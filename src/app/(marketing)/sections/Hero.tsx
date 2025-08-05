@@ -68,30 +68,42 @@ export const Hero = () => {
 	return (
 		<div className="mt-16 pb-0 px-0 relative" aria-labelledby="hero-heading">
 			{/* Background SVGs - marked as decorative */}
-			{/* Left SVG */}
+			{/* Left SVG - Optimized with Next.js Image */}
 			<div
 				className="absolute left-0 top-[18rem] xl:top-40 w-1/2 h-[36rem] xl:h-[42rem] z-[-1] overflow-hidden hidden lg:flex flex-col justify-center items-start"
 				aria-hidden="true"
 			>
-				<img
-					src="/images/backgrounds/left.svg"
-					alt=""
-					className="w-auto h-[24rem] opacity-20"
-					role="presentation"
-				/>
+				<div className="relative w-auto h-[24rem] opacity-20">
+					<Image
+						src="/images/backgrounds/left.svg"
+						alt=""
+						width={400}
+						height={384}
+						className="w-auto h-[24rem] object-contain"
+						role="presentation"
+						priority={false}
+						sizes="(max-width: 1024px) 0px, 400px"
+					/>
+				</div>
 			</div>
 
-			{/* Right SVG */}
+			{/* Right SVG - Optimized with Next.js Image */}
 			<div
 				className="absolute right-0 top-[18rem] xl:top-40 w-1/2 h-[36rem] xl:h-[42rem] z-[-1] overflow-hidden hidden lg:flex flex-col justify-center items-end"
 				aria-hidden="true"
 			>
-				<img
-					src="/images/backgrounds/right.svg"
-					alt=""
-					className="w-auto h-[24rem] opacity-20"
-					role="presentation"
-				/>
+				<div className="relative w-auto h-[24rem] opacity-20">
+					<Image
+						src="/images/backgrounds/right.svg"
+						alt=""
+						width={400}
+						height={384}
+						className="w-auto h-[24rem] object-contain"
+						role="presentation"
+						priority={false}
+						sizes="(max-width: 1024px) 0px, 400px"
+					/>
+				</div>
 			</div>
 
 			{/* Hero Content */}
@@ -160,7 +172,7 @@ export const Hero = () => {
 											fill
 											className="object-contain"
 											priority
-											sizes="100vw"
+											sizes="128px"
 										/>
 									</div>
 								</div>
@@ -241,7 +253,7 @@ export const Hero = () => {
 											alt="Illustration of Justie, a multi-tasking creative team lead"
 											fill
 											className="object-contain"
-											sizes="100vw"
+											sizes="192px"
 											priority
 										/>
 									</div>
@@ -267,7 +279,7 @@ export const Hero = () => {
 								fill
 								className="object-contain opacity-20"
 								priority
-								sizes="100vw"
+								sizes="(max-width: 1024px) 100vw, 0px"
 								role="presentation"
 							/>
 						</div>
@@ -282,7 +294,7 @@ export const Hero = () => {
 										fill
 										className="object-contain"
 										priority
-										sizes="100vw"
+										sizes="(max-width: 1024px) 50vw, 0px"
 									/>
 								</div>
 								<div className="marketing-body-xs text-foreground-weak p-4 pb-0 max-w-[15rem] mx-auto">
@@ -297,7 +309,7 @@ export const Hero = () => {
 										alt="Illustration of Justie, a multi-tasking creative team lead"
 										fill
 										className="object-contain"
-										sizes="100vw"
+										sizes="(max-width: 1024px) 50vw, 0px"
 										priority
 									/>
 								</div>

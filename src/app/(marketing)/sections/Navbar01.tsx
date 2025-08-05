@@ -78,11 +78,22 @@ export const Navbar = () => {
 						aria-label="JustScore home page"
 						className="focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 rounded-sm"
 					>
-						<BrandLogo
-							variant="default"
-							size="base"
-							className="text-primary-950"
-						/>
+						{/* Mobile: Icon only */}
+						<div className="sm:hidden">
+							<BrandLogo
+								variant="icon"
+								size="lg"
+								className="text-primary-950"
+							/>
+						</div>
+						{/* Desktop: Full logo with text */}
+						<div className="hidden sm:block">
+							<BrandLogo
+								variant="default"
+								size="base"
+								className="text-primary-950"
+							/>
+						</div>
 					</Link>
 				</div>
 
