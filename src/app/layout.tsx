@@ -48,7 +48,7 @@ export default function RootLayout({
 					id="hs-script-loader"
 					async
 					defer
-					src="//js-eu1.hs-scripts.com/146397770.js"
+					src={`https://js.hs-scripts.com/${process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID}.js`}
 				></script>
 				{/* End of HubSpot Embed Code */}
 
