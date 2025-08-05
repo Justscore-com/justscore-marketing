@@ -24,7 +24,7 @@ export default function RootLayout({
 						new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 						j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 						'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-						})(window,document,'script','dataLayer','GTM-5X8NMTFR');`
+						})(window,document,'script','dataLayer','GTM-5X8NMTFR');`,
 					}}
 				/>
 				{/* End Google Tag Manager */}
@@ -38,13 +38,19 @@ export default function RootLayout({
 						r=o.createElement('script');r.async=1;
 						r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
 						a.appendChild(r);
-					})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`
+					})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`,
 					}}
 				/>
 
-				<!-- Start of HubSpot Embed Code -->
-<script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/146397770.js"></script>
-<!-- End of HubSpot Embed Code -->
+				{/* Start of HubSpot Embed Code */}
+				<script
+					type="text/javascript"
+					id="hs-script-loader"
+					async
+					defer
+					src="//js-eu1.hs-scripts.com/146397770.js"
+				></script>
+				{/* End of HubSpot Embed Code */}
 
 				{/* Preload critical font variants for optimal performance */}
 				<link
@@ -104,13 +110,6 @@ export default function RootLayout({
 						<ClientToaster />
 					</Providers>
 				</ThemeProvider>
-				<script
-					type="text/javascript"
-					id="hs-script-loader"
-					async
-					defer
-					src="//js-eu1.hs-scripts.com/146397770.js"
-				></script>
 			</body>
 		</html>
 	);
