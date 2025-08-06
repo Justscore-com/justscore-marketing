@@ -162,13 +162,13 @@ export const Hero = () => {
 								{/* Left Side - Justy Character */}
 								<div className="hidden lg:flex col-span-2 items-end justify-center">
 									<div className="marketing-body-xs text-muted-foreground w-[12rem] text-right">
-										<strong>Justy</strong> is a Team Manager that cares about
+										<strong>Justy</strong> is a Head of Department that cares about
 										efficiency and productivity.
 									</div>
 									<div className="relative h-[21rem] w-[8rem]">
 										<Image
 											src="/images/illustrations/justy-thinking.svg"
-											alt="Illustration of Justy, a team manager focused on efficiency and productivity"
+											alt="Illustration of Justy, a Head of Department focused on efficiency and productivity"
 											fill
 											className="object-contain"
 											priority
@@ -250,7 +250,7 @@ export const Hero = () => {
 									<div className="relative h-[21rem] w-[12rem]">
 										<Image
 											src="/images/illustrations/justie-excited.svg"
-											alt="Illustration of Justie, a multi-tasking creative team lead"
+											alt="Illustration of Justie, a multi-tasking creative team leader"
 											fill
 											className="object-contain"
 											sizes="192px"
@@ -259,7 +259,7 @@ export const Hero = () => {
 									</div>
 									<div className="marketing-body-xs text-foreground-weak w-[12rem]">
 										<strong>Justie</strong> is a multi-tasking creative hands-on
-										Team Lead that has a lot on her plate.
+										Team Leader that has a lot on her plate.
 									</div>
 								</div>
 							</div>
@@ -290,7 +290,7 @@ export const Hero = () => {
 								<div className="relative h-[16rem]">
 									<Image
 										src="/images/illustrations/justy-thinking.svg"
-										alt="Illustration of Justy, a team manager focused on efficiency and productivity"
+										alt="Illustration of Justy, a Head of Department focused on efficiency and productivity"
 										fill
 										className="object-contain"
 										priority
@@ -298,7 +298,7 @@ export const Hero = () => {
 									/>
 								</div>
 								<div className="marketing-body-xs text-foreground-weak p-4 pb-0 max-w-[15rem] mx-auto">
-									<strong>Justy</strong> is a Team Manager that cares about
+									<strong>Justy</strong> is a Head of Department that cares about
 									efficiency and productivity.
 								</div>
 							</div>
@@ -315,7 +315,7 @@ export const Hero = () => {
 								</div>
 								<div className="marketing-body-xs text-foreground-weak p-4 pb-0 max-w-[15rem] mx-auto">
 									<strong>Justie</strong> is a multi-tasking creative hands-on
-									Team Lead that has a lot on her plate.
+									Team Leader that has a lot on her plate.
 								</div>
 							</div>
 						</div>

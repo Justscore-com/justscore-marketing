@@ -43,13 +43,13 @@ const Step2RoleForm: React.FC = () => {
 		},
 		{
 			value: 'Snr Director',
-			label: 'Senior Director',
+			label: 'Director',
 			description: 'Senior management position',
 		},
 		{
 			value: 'Director',
-			label: 'Director',
-			description: 'Management position',
+			label: 'Head of Dept',
+			description: 'Dept Management position',
 		},
 		{
 			value: 'Snr Manager',
