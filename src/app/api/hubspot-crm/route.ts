@@ -26,8 +26,8 @@ const teamSizeMap: Record<string, string> = {
 const roleMap: Record<string, string> = {
 	'Chief X Officer': 'chief_officer',
 	VP: 'vice_president',
-	'Snr Director': 'senior_director',
-	Director: 'director',
+	'Snr Director': 'senior_director', // Maps to "Director" label in UI
+	Director: 'director', // Maps to "Head of Dept" label in UI
 	'Snr Manager': 'senior_manager',
 	Manager: 'manager',
 	'Team Lead': 'team_lead',
